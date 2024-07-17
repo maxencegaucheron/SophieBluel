@@ -18,15 +18,15 @@ fetch("http://localhost:5678/api/works")
             console.error("Element with class 'gallery' not found.");
             return;
         }
-        const worksTotal = 11;
+        const worksTotal = data.length;
 
-        for (let id = 0; id < worksTotal; id++) {
+        for (let i = 0; i < worksTotal; i++) {
             const worksContainer = document.createElement("figure");
             const worksImage = document.createElement("img");
-            worksImage.src = data[id].imageUrl;
-            worksImage.alt = data[id].title;
+            worksImage.src = data[i].imageUrl;
+            worksImage.alt = data[i].title;
             const worksCaption = document.createElement("figcaption");
-            worksCaption.textContent = data[id].title;
+            worksCaption.textContent = data[i].title;
             worksGallery.appendChild(worksContainer);
             worksContainer.appendChild(worksImage);
             worksContainer.appendChild(worksCaption);
