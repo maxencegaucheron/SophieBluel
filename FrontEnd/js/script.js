@@ -57,6 +57,20 @@ fetch("http://localhost:5678/api/categories")
             console.error("Element with class \"categories\" not found.");
             return;
         }
+
+        const categoriesTotal = data.length;
+
+        const categoriesElement = document.createElement("p");
+        categoriesElement.textContent = "Tous";
+        worksCategories.appendChild(categoriesElement);
+
+        for (let i = 0; i < categoriesTotal; i++) {
+
+            const categoriesElement = document.createElement("p");
+            categoriesElement.textContent = data[i].name;
+            worksCategories.appendChild(categoriesElement);
+        }
+
     })
 
     .catch(error => {
