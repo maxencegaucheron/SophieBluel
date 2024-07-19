@@ -296,19 +296,19 @@ footer nav ul {
 	display: flex;
 	justify-content: center;
 	padding-bottom: 30px;
+	color: #1D6154;
 }
 
 .categories p {
 	font-family: 'Syne';
 	font-weight: 700;
-	color: #1D6154;
 	padding: 10px 20px 10px;
 	margin: 10px;
 	border: 1px solid #1D6154;
 	border-radius: 50px;
 }
 
-.categories p:hover {
+.p_selected {
 	color: white;
 	background-color: #1D6154;
 }

@@ -60,9 +60,10 @@ fetch("http://localhost:5678/api/categories")
 
         const categoriesTotal = data.length;
 
-        const categoriesElement = document.createElement("p");
-        categoriesElement.textContent = "Tous";
-        worksCategories.appendChild(categoriesElement);
+        const categoriesElementTous = document.createElement("p");
+        categoriesElementTous.textContent = "Tous";
+        worksCategories.appendChild(categoriesElementTous);
+        categoriesElementTous.classList.add("p_selected");
 
         for (let i = 0; i < categoriesTotal; i++) {
 
@@ -73,6 +74,7 @@ fetch("http://localhost:5678/api/categories")
 
         worksCategories.addEventListener("click", function () {
             console.log("clic clic");
+
         });
     })
 
