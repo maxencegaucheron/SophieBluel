@@ -60,10 +60,10 @@ fetch("http://localhost:5678/api/categories")
 
         const categoriesTotal = data.length;
 
-        const categoriesElementTous = document.createElement("p");
-        categoriesElementTous.textContent = "Tous";
-        worksCategories.appendChild(categoriesElementTous);
-        categoriesElementTous.classList.add("p_selected");
+        const categoriesElement = document.createElement("p");
+        categoriesElement.textContent = "Tous";
+        worksCategories.appendChild(categoriesElement);
+        categoriesElement.classList.add("p_selected");
 
         for (let i = 0; i < categoriesTotal; i++) {
 
@@ -72,10 +72,18 @@ fetch("http://localhost:5678/api/categories")
             worksCategories.appendChild(categoriesElement);
         }
 
-        worksCategories.addEventListener("click", function () {
-            console.log("clic clic");
+        let categoriesBouton = document.querySelectorAll(".categories p");
 
-        });
+        categoriesBouton.forEach(function (element) {
+            element.addEventListener("click", function () {
+                console.log("CLIC");
+            })
+        })
+
+        //worksCategories.addEventListener("click", function () {
+        //   categoriesElementTous.classList.remove("p_selected");
+        // console.log("clic clic");
+        //});
     })
 
     .catch(error => {
