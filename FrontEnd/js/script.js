@@ -71,6 +71,9 @@ fetch("http://localhost:5678/api/categories")
             worksCategories.appendChild(categoriesElement);
         }
 
+        worksCategories.addEventListener("click", function () {
+            console.log("clic clic");
+        });
     })
 
     .catch(error => {
