@@ -75,15 +75,15 @@ fetch("http://localhost:5678/api/categories")
         let categoriesBouton = document.querySelectorAll(".categories p");
 
         categoriesBouton.forEach(function (element) {
-            element.addEventListener("click", function () {
-                console.log("CLIC");
+            element.addEventListener("click", function (event) {
+                console.log("Vous avez cliqué sur le bouton", event.target.textContent);
+
+                categoriesBouton.forEach(function (btn) {
+                    btn.classList.remove("p_selected");
+                });
+                event.target.classList.add("p_selected");
             })
         })
-
-        //worksCategories.addEventListener("click", function () {
-        //   categoriesElementTous.classList.remove("p_selected");
-        // console.log("clic clic");
-        //});
     })
 
     .catch(error => {
