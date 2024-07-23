@@ -72,9 +72,14 @@ fetch("http://localhost:5678/api/categories")
             worksCategories.appendChild(categoriesElement);
         }
 
-        worksCategories.addEventListener("click", function () {
-            console.log("Vous avez cliqué sur un bouton");
-        });
+        // addEventListener pour chaque bouton
+        let categoriesBouton = document.querySelectorAll(".categories p");
+
+        for (let i = 0; i < categoriesBouton.length; i++) {
+            categoriesBouton[i].addEventListener("click", function (event) {
+                console.log("Vous avez cliqué sur le bouton", event.target.textContent)
+            })
+        }
     })
 
     .catch(error => {
