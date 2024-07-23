@@ -78,6 +78,11 @@ fetch("http://localhost:5678/api/categories")
         for (let i = 0; i < categoriesBouton.length; i++) {
             categoriesBouton[i].addEventListener("click", function (event) {
                 console.log("Vous avez cliqué sur le bouton", event.target.textContent)
+
+                categoriesBouton.forEach(function (removeSelected) {
+                    removeSelected.classList.remove("p_selected");
+                })
+                event.target.classList.add("p_selected");
             })
         }
     })
