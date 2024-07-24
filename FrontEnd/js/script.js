@@ -1,4 +1,5 @@
 // Récupération des travaux
+
 console.log("Starting fetch operation to http://localhost:5678/api/works");
 
 fetch("http://localhost:5678/api/works")
@@ -58,10 +59,12 @@ fetch("http://localhost:5678/api/categories")
             return;
         }
 
+        const allWorks = data;
         const categoriesTotal = data.length;
 
         const categoriesElement = document.createElement("p");
         categoriesElement.textContent = "Tous";
+        categoriesElement.id = "Tous";
         worksCategories.appendChild(categoriesElement);
         categoriesElement.classList.add("p_selected");
 
@@ -73,18 +76,12 @@ fetch("http://localhost:5678/api/categories")
         }
 
         // addEventListener pour chaque bouton
-        let categoriesBouton = document.querySelectorAll(".categories p");
 
-        for (let i = 0; i < categoriesBouton.length; i++) {
-            categoriesBouton[i].addEventListener("click", function (event) {
-                console.log("Vous avez cliqué sur le bouton", event.target.textContent)
-
-                categoriesBouton.forEach(function (removeSelected) {
-                    removeSelected.classList.remove("p_selected");
-                })
-                event.target.classList.add("p_selected");
-            })
-        }
+        let boutonTous = document.getElementById("Tous");
+        boutonTous.addEventListener("click", function () {
+            console.log("Vous avez cliqué sur le bouton Tous");
+            boutonTous.classList.add("p_selected");
+        })
     })
 
     .catch(error => {
