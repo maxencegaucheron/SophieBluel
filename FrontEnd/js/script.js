@@ -1,4 +1,4 @@
-// Récupération des travaux\
+// Récupération des travaux
 console.log("Starting fetch operation to http://localhost:5678/api/works");
 
 fetch("http://localhost:5678/api/works")
@@ -23,15 +23,9 @@ fetch("http://localhost:5678/api/works")
 
         const worksTotal = data.length;
 
-        async function getAllWorks() {
-            const allWorks = data;
-            return allWorks;
-        }
-
-        asyncCall();
-
         for (let i = 0; i < worksTotal; i++) {
             const worksContainer = document.createElement("figure");
+            worksContainer.id = `work${data[i].id}`;
             const worksImage = document.createElement("img");
             worksImage.src = data[i].imageUrl;
             worksImage.alt = data[i].title;
@@ -84,8 +78,7 @@ fetch("http://localhost:5678/api/categories")
             worksCategories.appendChild(categoriesElement);
         }
 
-        // addEventListener pour chaque bouton
-
+        // EventListener du bouton Tous
         let boutonTous = document.getElementById("0");
         boutonTous.addEventListener("click", function () {
             console.log("Vous avez cliqué sur le bouton Tous");
@@ -93,49 +86,70 @@ fetch("http://localhost:5678/api/categories")
             //afficher tout les works
         })
 
+        // EventListener pour la catégorie Objets
         let boutonObjets = document.getElementById("1");
         boutonObjets.addEventListener("click", function () {
             console.log("Vous avez cliqué sur le bouton Objets");
             // boutonObjets.classList.add("p_selected");
 
-            // Filtrage de la catégorie Objets / does not work
+            // Récupération des travaux 2
+            console.log("Starting fetch operation to http://localhost:5678/api/works");
 
-            // soit tu fais une requetes -> recuperer les works
-            // soit tu recupere la section gallery
+            fetch("http://localhost:5678/api/works")
+                .then(response => {
+                    if (response.ok) {
+                        console.log("Works fetched properly 2");
+                        return response.json();
+                    } else {
+                        console.log("Request failed:", response.status);
+                        throw new Error("Network response was not ok");
+                    }
+                })
 
-            const allWorks = getAllWorks();
-            console.log("test", allWorks);
+                .then(data => {
+                    console.log("Data received", data);
+                    const worksGallery = document.querySelector(".gallery");
+                    if (!worksGallery) {
+                        console.error("Element with class \"gallery\" not found.");
+                        return;
+                    }
 
-            const worksObjets = allWorks.filter((works) => works.categoryId === 1);
-            console.log(allWorks, worksObjets);
-            const worksObjetsTotal = worksObjets.length;
+                    // Filtrage des travaux 
+                    let allWorks = data;
+                    // const worksTotal = data.length;
 
-            const worksGallery = document.querySelector(".gallery");
+                    const works = worksGallery.querySelectorAll("figure");
+                    works.forEach(work => work.style.display = "none");
 
-            if (!worksGallery) {
-                console.error("Element with class \"gallery\" not found.");
-                return;
-            }
+                    const worksObjects = allWorks.filter((works) => works.categoryId === 1);
+                    console.log(worksObjects, "ID pour data[0]", data[0].id);
 
 
-            for (let i = 0; i < worksObjetsTotal; i++) {
-                // css tu affiche soit tu cache
+                    worksObjects.forEach(work => {
+                        const worksElement = document.getElementById(`work${work.id}`);
+                        if (worksElement) {
+                            worksElement.style.display = "inline";
+                        } else {
+                            console.error(`Element with work.id ${work.id} not found.`);
+                        }
+                    });
 
-                const worksContainer = document.createElement("figure");
-                const worksImage = document.createElement("img");
-                worksImage.src = data[i].imageUrl;
-                worksImage.alt = data[i].title;
-                const worksCaption = document.createElement("figcaption");
-                worksCaption.textContent = data[i].title;
-                worksGallery.appendChild(worksContainer);
-                worksContainer.appendChild(worksImage);
-                worksContainer.appendChild(worksCaption);
-            }
+                    // get list from allWorks > transformer l'array en liste jsp
+                    // set = non.
+
+
+
+                    // get list from worksObjects > //
+                    // pour chaque élément de allWorks tant que i < worksTotal = display hidden
+                    // pour chaque élément de worksObjects tant que i < objectLenght (à déclarer) = display inline
+
+
+                    // Même chose mais Id des works et pas des catégories?
+                    const test = document.getElementById(`work${data[0].id}`);
+                    console.log("Work 1:", test);
+                })
         })
     })
-
-    //
-
     .catch(error => {
         console.log("Erreur:", error);
-    });
+    })
