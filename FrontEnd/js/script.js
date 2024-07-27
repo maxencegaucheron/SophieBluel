@@ -82,6 +82,10 @@ fetch("http://localhost:5678/api/categories")
         let boutonTous = document.getElementById("0");
         boutonTous.addEventListener("click", function () {
             console.log("Vous avez cliqué sur le bouton Tous");
+
+            // Modification des classes
+            let boutonsAll = document.querySelectorAll("p");
+            boutonsAll.forEach(bouton => bouton.classList.remove("p_selected"));
             boutonTous.classList.add("p_selected");
             //afficher tout les works
 
@@ -118,7 +122,11 @@ fetch("http://localhost:5678/api/categories")
         let boutonObjets = document.getElementById("1");
         boutonObjets.addEventListener("click", function () {
             console.log("Vous avez cliqué sur le bouton Objets");
-            // boutonObjets.classList.add("p_selected");
+
+            // Modification des classes
+            let boutonsAll = document.querySelectorAll("p");
+            boutonsAll.forEach(bouton => bouton.classList.remove("p_selected"));
+            boutonObjets.classList.add("p_selected");
 
             // Récupération des travaux 2
             console.log("Starting fetch operation to http://localhost:5678/api/works");
@@ -168,7 +176,11 @@ fetch("http://localhost:5678/api/categories")
         let boutonAppartements = document.getElementById("2");
         boutonAppartements.addEventListener("click", function () {
             console.log("Vous avez cliqué sur le bouton Appartements");
-            // boutonObjets.classList.add("p_selected");
+
+            // Modification des classes
+            let boutonsAll = document.querySelectorAll("p");
+            boutonsAll.forEach(bouton => bouton.classList.remove("p_selected"));
+            boutonAppartements.classList.add("p_selected");
 
             // Récupération des travaux 2
             console.log("Starting fetch operation to http://localhost:5678/api/works");
@@ -218,7 +230,11 @@ fetch("http://localhost:5678/api/categories")
         let boutonHotels = document.getElementById("3");
         boutonHotels.addEventListener("click", function () {
             console.log("Vous avez cliqué sur le bouton Appartements");
-            // boutonObjets.classList.add("p_selected");
+
+            // Modification des classes
+            let boutonsAll = document.querySelectorAll("p");
+            boutonsAll.forEach(bouton => bouton.classList.remove("p_selected"));
+            boutonHotels.classList.add("p_selected");
 
             // Récupération des travaux 2
             console.log("Starting fetch operation to http://localhost:5678/api/works");
