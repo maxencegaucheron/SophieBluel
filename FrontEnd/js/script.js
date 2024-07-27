@@ -84,6 +84,34 @@ fetch("http://localhost:5678/api/categories")
             console.log("Vous avez cliqué sur le bouton Tous");
             boutonTous.classList.add("p_selected");
             //afficher tout les works
+
+            // Récupération des travaux 2
+            console.log("Starting fetch operation to http://localhost:5678/api/works");
+
+            fetch("http://localhost:5678/api/works")
+                .then(response => {
+                    if (response.ok) {
+                        console.log("Works fetched properly 2");
+                        return response.json();
+                    } else {
+                        console.log("Request failed:", response.status);
+                        throw new Error("Network response was not ok");
+                    }
+                })
+
+                .then(data => {
+                    console.log("Data received", data);
+                    const worksGallery = document.querySelector(".gallery");
+                    if (!worksGallery) {
+                        console.error("Element with class \"gallery\" not found.");
+                        return;
+                    }
+
+                    // Filtrage des travaux 
+                    let allWorks = data;
+                    const works = worksGallery.querySelectorAll("figure");
+                    works.forEach(work => work.style.display = "inline");
+                })
         })
 
         // EventListener pour la catégorie Objets
@@ -116,16 +144,13 @@ fetch("http://localhost:5678/api/categories")
 
                     // Filtrage des travaux 
                     let allWorks = data;
-                    // const worksTotal = data.length;
-
                     const works = worksGallery.querySelectorAll("figure");
                     works.forEach(work => work.style.display = "none");
 
-                    const worksObjects = allWorks.filter((works) => works.categoryId === 1);
-                    console.log(worksObjects, "ID pour data[0]", data[0].id);
+                    const worksFiltered = allWorks.filter((works) => works.categoryId === 1);
+                    console.log(worksFiltered, "ID pour data[0]", data[0].id);
 
-
-                    worksObjects.forEach(work => {
+                    worksFiltered.forEach(work => {
                         const worksElement = document.getElementById(`work${work.id}`);
                         if (worksElement) {
                             worksElement.style.display = "inline";
@@ -134,21 +159,111 @@ fetch("http://localhost:5678/api/categories")
                         }
                     });
 
-                    // get list from allWorks > transformer l'array en liste jsp
-                    // set = non.
-
-
-
-                    // get list from worksObjects > //
-                    // pour chaque élément de allWorks tant que i < worksTotal = display hidden
-                    // pour chaque élément de worksObjects tant que i < objectLenght (à déclarer) = display inline
-
-
-                    // Même chose mais Id des works et pas des catégories?
                     const test = document.getElementById(`work${data[0].id}`);
                     console.log("Work 1:", test);
                 })
         })
+
+        // EventListener pour la catégorie Appartements
+        let boutonAppartements = document.getElementById("2");
+        boutonAppartements.addEventListener("click", function () {
+            console.log("Vous avez cliqué sur le bouton Appartements");
+            // boutonObjets.classList.add("p_selected");
+
+            // Récupération des travaux 2
+            console.log("Starting fetch operation to http://localhost:5678/api/works");
+
+            fetch("http://localhost:5678/api/works")
+                .then(response => {
+                    if (response.ok) {
+                        console.log("Works fetched properly 2");
+                        return response.json();
+                    } else {
+                        console.log("Request failed:", response.status);
+                        throw new Error("Network response was not ok");
+                    }
+                })
+
+                .then(data => {
+                    console.log("Data received", data);
+                    const worksGallery = document.querySelector(".gallery");
+                    if (!worksGallery) {
+                        console.error("Element with class \"gallery\" not found.");
+                        return;
+                    }
+
+                    // Filtrage des travaux 
+                    let allWorks = data;
+                    const works = worksGallery.querySelectorAll("figure");
+                    works.forEach(work => work.style.display = "none");
+
+                    const worksFiltered = allWorks.filter((works) => works.categoryId === 2);
+                    console.log(worksFiltered);
+
+                    worksFiltered.forEach(work => {
+                        const worksElement = document.getElementById(`work${work.id}`);
+                        if (worksElement) {
+                            worksElement.style.display = "inline";
+                        } else {
+                            console.error(`Element with work.id ${work.id} not found.`);
+                        }
+                    });
+
+                    const test = document.getElementById(`work${data[0].id}`);
+                    console.log("Work 1:", test);
+                })
+        })
+
+        // EventListener pour la catégorie Hotels et Restaurants
+        let boutonHotels = document.getElementById("3");
+        boutonHotels.addEventListener("click", function () {
+            console.log("Vous avez cliqué sur le bouton Appartements");
+            // boutonObjets.classList.add("p_selected");
+
+            // Récupération des travaux 2
+            console.log("Starting fetch operation to http://localhost:5678/api/works");
+
+            fetch("http://localhost:5678/api/works")
+                .then(response => {
+                    if (response.ok) {
+                        console.log("Works fetched properly 2");
+                        return response.json();
+                    } else {
+                        console.log("Request failed:", response.status);
+                        throw new Error("Network response was not ok");
+                    }
+                })
+
+                .then(data => {
+                    console.log("Data received", data);
+                    const worksGallery = document.querySelector(".gallery");
+                    if (!worksGallery) {
+                        console.error("Element with class \"gallery\" not found.");
+                        return;
+                    }
+
+                    // Filtrage des travaux 
+                    let allWorks = data;
+                    const works = worksGallery.querySelectorAll("figure");
+                    works.forEach(work => work.style.display = "none");
+
+                    const worksFiltered = allWorks.filter((works) => works.categoryId === 3);
+                    console.log(worksFiltered);
+
+                    worksFiltered.forEach(work => {
+                        const worksElement = document.getElementById(`work${work.id}`);
+                        if (worksElement) {
+                            worksElement.style.display = "inline";
+                        } else {
+                            console.error(`Element with work.id ${work.id} not found.`);
+                        }
+                    });
+
+                    const test = document.getElementById(`work${data[0].id}`);
+                    console.log("Work 1:", test);
+                })
+        })
+
     })
     .catch(error => {
         console.log("Erreur:", error);
