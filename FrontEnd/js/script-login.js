@@ -1,4 +1,3 @@
-// Intégration du design de la page de formulaire
 localStorage.setItem("user_token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcyMjI3NzMyMywiZXhwIjoxNzIyMzYzNzIzfQ.Ad1jzWll9tVKDMoudDEZjN1pfreWd-SKy-5npIm9nag")
 
 function addListenerAuthentification() {

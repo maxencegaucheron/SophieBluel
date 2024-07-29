@@ -78,208 +78,66 @@ fetch("http://localhost:5678/api/categories")
             worksCategories.appendChild(categoriesElement);
         }
 
-        // EventListener du bouton Tous
-        let boutonTous = document.getElementById("0");
-        boutonTous.addEventListener("click", function () {
-            console.log("Vous avez cliqué sur le bouton Tous");
+        // Boucle pour trier les travaux au clic
+        for (i = 0; i < categoriesTotal + 1; i++) {
+            let bouton = document.getElementById(i.toString());
+            bouton.addEventListener("click", function () {
+                console.log("Vous avez cliqué sur le bouton", bouton.id);
 
-            // Modification des classes
-            let boutonsAll = document.querySelectorAll("p");
-            boutonsAll.forEach(bouton => bouton.classList.remove("p_selected"));
-            boutonTous.classList.add("p_selected");
-            //afficher tout les works
+                let boutonId = bouton.id;
 
-            // Récupération des travaux 2
-            console.log("Starting fetch operation to http://localhost:5678/api/works");
+                // Modification des classes
+                let boutonsAll = document.querySelectorAll("p");
+                boutonsAll.forEach(bouton => bouton.classList.remove("p_selected"));
+                bouton.classList.add("p_selected");
 
-            fetch("http://localhost:5678/api/works")
-                .then(response => {
-                    if (response.ok) {
-                        console.log("Works fetched properly 2");
-                        return response.json();
-                    } else {
-                        console.log("Request failed:", response.status);
-                        throw new Error("Network response was not ok");
-                    }
-                })
-
-                .then(data => {
-                    console.log("Data received", data);
-                    const worksGallery = document.querySelector(".gallery");
-                    if (!worksGallery) {
-                        console.error("Element with class \"gallery\" not found.");
-                        return;
-                    }
-
-                    // Filtrage des travaux 
-                    const works = worksGallery.querySelectorAll("figure");
-                    works.forEach(work => work.style.display = "inline");
-                })
-        })
-
-        // EventListener pour la catégorie Objets
-        let boutonObjets = document.getElementById("1");
-        boutonObjets.addEventListener("click", function () {
-            console.log("Vous avez cliqué sur le bouton Objets");
-
-            // Modification des classes
-            let boutonsAll = document.querySelectorAll("p");
-            boutonsAll.forEach(bouton => bouton.classList.remove("p_selected"));
-            boutonObjets.classList.add("p_selected");
-
-            // Récupération des travaux 2
-            console.log("Starting fetch operation to http://localhost:5678/api/works");
-
-            fetch("http://localhost:5678/api/works")
-                .then(response => {
-                    if (response.ok) {
-                        console.log("Works fetched properly 2");
-                        return response.json();
-                    } else {
-                        console.log("Request failed:", response.status);
-                        throw new Error("Network response was not ok");
-                    }
-                })
-
-                .then(data => {
-                    console.log("Data received", data);
-                    const worksGallery = document.querySelector(".gallery");
-                    if (!worksGallery) {
-                        console.error("Element with class \"gallery\" not found.");
-                        return;
-                    }
-
-                    // Filtrage des travaux 
-                    let allWorks = data;
-                    const works = worksGallery.querySelectorAll("figure");
-                    works.forEach(work => work.style.display = "none");
-
-                    const worksFiltered = allWorks.filter((works) => works.categoryId === 1);
-                    console.log(worksFiltered, "ID pour data[0]", data[0].id);
-
-                    worksFiltered.forEach(work => {
-                        const worksElement = document.getElementById(`work${work.id}`);
-                        if (worksElement) {
-                            worksElement.style.display = "inline";
+                console.log("Starting fetch operation to http://localhost:5678/api/works");
+                fetch("http://localhost:5678/api/works")
+                    .then(response => {
+                        if (response.ok) {
+                            console.log("Works fetched properly 2");
+                            return response.json();
                         } else {
-                            console.error(`Element with work.id ${work.id} not found.`);
+                            console.log("Request failed:", response.status);
+                            throw new Error("Network response was not ok");
                         }
-                    });
+                    })
 
-                    const test = document.getElementById(`work${data[0].id}`);
-                    console.log("Work 1:", test);
-                })
-        })
-
-        // EventListener pour la catégorie Appartements
-        let boutonAppartements = document.getElementById("2");
-        boutonAppartements.addEventListener("click", function () {
-            console.log("Vous avez cliqué sur le bouton Appartements");
-
-            // Modification des classes
-            let boutonsAll = document.querySelectorAll("p");
-            boutonsAll.forEach(bouton => bouton.classList.remove("p_selected"));
-            boutonAppartements.classList.add("p_selected");
-
-            // Récupération des travaux 2
-            console.log("Starting fetch operation to http://localhost:5678/api/works");
-
-            fetch("http://localhost:5678/api/works")
-                .then(response => {
-                    if (response.ok) {
-                        console.log("Works fetched properly 2");
-                        return response.json();
-                    } else {
-                        console.log("Request failed:", response.status);
-                        throw new Error("Network response was not ok");
-                    }
-                })
-
-                .then(data => {
-                    console.log("Data received", data);
-                    const worksGallery = document.querySelector(".gallery");
-                    if (!worksGallery) {
-                        console.error("Element with class \"gallery\" not found.");
-                        return;
-                    }
-
-                    // Filtrage des travaux 
-                    let allWorks = data;
-                    const works = worksGallery.querySelectorAll("figure");
-                    works.forEach(work => work.style.display = "none");
-
-                    const worksFiltered = allWorks.filter((works) => works.categoryId === 2);
-                    console.log(worksFiltered);
-
-                    worksFiltered.forEach(work => {
-                        const worksElement = document.getElementById(`work${work.id}`);
-                        if (worksElement) {
-                            worksElement.style.display = "inline";
-                        } else {
-                            console.error(`Element with work.id ${work.id} not found.`);
+                    .then(data => {
+                        console.log("Data received", data);
+                        const worksGallery = document.querySelector(".gallery");
+                        if (!worksGallery) {
+                            console.error("Element with class \"gallery\" not found.");
+                            return;
                         }
-                    });
 
-                    const test = document.getElementById(`work${data[0].id}`);
-                    console.log("Work 1:", test);
-                })
-        })
-
-        // EventListener pour la catégorie Hotels et Restaurants
-        let boutonHotels = document.getElementById("3");
-        boutonHotels.addEventListener("click", function () {
-            console.log("Vous avez cliqué sur le bouton Appartements");
-
-            // Modification des classes
-            let boutonsAll = document.querySelectorAll("p");
-            boutonsAll.forEach(bouton => bouton.classList.remove("p_selected"));
-            boutonHotels.classList.add("p_selected");
-
-            // Récupération des travaux 2
-            console.log("Starting fetch operation to http://localhost:5678/api/works");
-
-            fetch("http://localhost:5678/api/works")
-                .then(response => {
-                    if (response.ok) {
-                        console.log("Works fetched properly 2");
-                        return response.json();
-                    } else {
-                        console.log("Request failed:", response.status);
-                        throw new Error("Network response was not ok");
-                    }
-                })
-
-                .then(data => {
-                    console.log("Data received", data);
-                    const worksGallery = document.querySelector(".gallery");
-                    if (!worksGallery) {
-                        console.error("Element with class \"gallery\" not found.");
-                        return;
-                    }
-
-                    // Filtrage des travaux 
-                    let allWorks = data;
-                    const works = worksGallery.querySelectorAll("figure");
-                    works.forEach(work => work.style.display = "none");
-
-                    const worksFiltered = allWorks.filter((works) => works.categoryId === 3);
-                    console.log(worksFiltered);
-
-                    worksFiltered.forEach(work => {
-                        const worksElement = document.getElementById(`work${work.id}`);
-                        if (worksElement) {
-                            worksElement.style.display = "inline";
-                        } else {
-                            console.error(`Element with work.id ${work.id} not found.`);
+                        if (boutonId === "0") {
+                            const works = worksGallery.querySelectorAll("figure");
+                            works.forEach(work => work.style.display = "inline");
                         }
-                    });
+                        else {
+                            // Filtrage des travaux 
+                            let allWorks = data;
+                            const works = worksGallery.querySelectorAll("figure");
+                            works.forEach(work => work.style.display = "none");
 
-                    const test = document.getElementById(`work${data[0].id}`);
-                    console.log("Work 1:", test);
-                })
-        })
+                            const worksFiltered = allWorks.filter((works) => works.categoryId.toString() === boutonId);
+
+                            worksFiltered.forEach(work => {
+                                const worksElement = document.getElementById(`work${work.id}`);
+                                if (worksElement) {
+                                    worksElement.style.display = "inline";
+                                } else {
+                                    console.error(`Element with work.id ${work.id} not found.`);
+                                }
+                            })
+                        }
+                    })
+            })
+        }
 
     })
+
     .catch(error => {
         console.log("Erreur:", error);
     })
