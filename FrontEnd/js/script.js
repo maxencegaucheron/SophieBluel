@@ -301,11 +301,12 @@ function addListenerAuthentification() {
         if (failedMessage) {
             failedMessage.remove();
         }
+        else { }
 
         if (login.email === "sophie.bluel@test.tld" && login.password === "S0phie") {
             console.log("Successfully authenticated");
-            failedMessage.remove();
         }
+
         else {
             console.log("Authentication failed");
             const failedLogin = document.createElement("p");
