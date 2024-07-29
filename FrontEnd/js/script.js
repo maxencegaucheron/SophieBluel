@@ -112,7 +112,6 @@ fetch("http://localhost:5678/api/categories")
                     }
 
                     // Filtrage des travaux 
-                    let allWorks = data;
                     const works = worksGallery.querySelectorAll("figure");
                     works.forEach(work => work.style.display = "inline");
                 })
@@ -284,3 +283,7 @@ fetch("http://localhost:5678/api/categories")
     .catch(error => {
         console.log("Erreur:", error);
     })
+
+
+// Intégration du design de la page de formulaire
+
