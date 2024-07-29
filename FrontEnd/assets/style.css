@@ -187,7 +187,8 @@ nav li {
 	font-size: 1.2em;
 }
 
-li:hover {
+li:hover,
+#on_login {
 	color: #B1663C;
 }
 
@@ -250,7 +251,6 @@ li:hover {
 #contact>*,
 #login>* {
 	text-align: center;
-
 }
 
 #contact h2,
@@ -327,4 +327,10 @@ footer nav ul {
 .p_selected {
 	color: white;
 	background-color: #1D6154;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+
 }
