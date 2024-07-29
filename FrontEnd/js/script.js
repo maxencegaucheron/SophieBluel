@@ -287,3 +287,25 @@ fetch("http://localhost:5678/api/categories")
 
 // Intégration du design de la page de formulaire
 
+function addListenerAuthentification() {
+    const loginForm = document.querySelector(".login_user");
+    loginForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const login = {
+            email: event.target.querySelector("[name=email]").value,
+            password: event.target.querySelector("[name=password]").value,
+        };
+
+        if (login.email === "sophie.bluel@test.tld" && login.password === "S0phie") {
+            console.log("Successfully authenticated");
+        }
+        else {
+            console.log("Authentication failed");
+        }
+    });
+}
+
+addListenerAuthentification();
+
+
