@@ -297,11 +297,22 @@ function addListenerAuthentification() {
             password: event.target.querySelector("[name=password]").value,
         };
 
+        const failedMessage = document.getElementById("failed_login");
+        if (failedMessage) {
+            failedMessage.remove();
+        }
+
         if (login.email === "sophie.bluel@test.tld" && login.password === "S0phie") {
             console.log("Successfully authenticated");
+            failedMessage.remove();
         }
         else {
             console.log("Authentication failed");
+            const failedLogin = document.createElement("p");
+            failedLogin.innerHTML = "Votre identifiant ou votre mot de passe est erronné.<br>Veuillez réessayer.";
+            failedLogin.id = "failed_login";
+            const loginForm = document.querySelector(".login_user");
+            loginForm.appendChild(failedLogin);
         }
     });
 }

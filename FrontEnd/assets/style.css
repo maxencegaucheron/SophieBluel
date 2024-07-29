@@ -172,7 +172,7 @@ h2 {
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
-	color: #1D6154
+	color: #1D6154;
 }
 
 nav ul {
@@ -285,8 +285,15 @@ li:hover,
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-#login p {
+#forgot_password {
 	text-decoration: underline;
+}
+
+#failed_login {
+	font-size: 1.2em;
+	text-align: center;
+	margin-bottom: 30px;
+	color: #1D6154;
 }
 
 input[type="submit"] {
@@ -332,5 +339,4 @@ footer nav ul {
 a {
 	text-decoration: none;
 	color: inherit;
-
 }
