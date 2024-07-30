@@ -141,3 +141,15 @@ fetch("http://localhost:5678/api/categories")
     .catch(error => {
         console.log("Erreur:", error);
     })
+
+// Quand utilisateur connecté
+function checkAuthentication() {
+    const token = localStorage.getItem("user_token");
+    if (token) {
+        console.log("User is connected");
+    }
+    else {
+        console.log("User is not connected");
+    }
+}
+checkAuthentication();
