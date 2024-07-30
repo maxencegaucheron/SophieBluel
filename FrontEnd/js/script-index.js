@@ -170,4 +170,13 @@ function addUserContent() {
         loggedInCategories.style.display = "none";
     }
 
+    const loginToLogout = document.getElementById("login");
+    if (loginToLogout) {
+        loginToLogout.textContent = "logout";
+        loginToLogout.href = "./index.html";
+        loginToLogout.addEventListener("click", function () {
+            const removeToken = localStorage.removeItem("user_token");
+        })
+
+    }
 }
