@@ -165,4 +165,9 @@ function addUserContent() {
         loggedInProjects.style.display = "inline";
     }
 
+    const loggedInCategories = document.querySelector(".categories");
+    if (loggedInCategories) {
+        loggedInCategories.style.display = "none";
+    }
+
 }
