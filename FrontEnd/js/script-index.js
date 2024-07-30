@@ -147,9 +147,18 @@ function checkAuthentication() {
     const token = localStorage.getItem("user_token");
     if (token) {
         console.log("User is connected");
+        addUserContent();
     }
     else {
         console.log("User is not connected");
     }
 }
 checkAuthentication();
+
+function addUserContent() {
+    const loggedInHeader = document.getElementById("mode_edition_header");
+    if (loggedInHeader) {
+        loggedInHeader.style.display = "flex";
+    }
+
+}
