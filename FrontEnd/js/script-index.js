@@ -160,5 +160,9 @@ function addUserContent() {
     if (loggedInHeader) {
         loggedInHeader.style.display = "flex";
     }
+    const loggedInProjects = document.getElementById("mode_edition_projets");
+    if (loggedInProjects) {
+        loggedInProjects.style.display = "inline";
+    }
 
 }
