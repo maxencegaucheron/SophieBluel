@@ -244,7 +244,9 @@ li:hover,
 	margin-right: 20px;
 }
 
-#mode_edition_projets {
+#mode_edition_modifier {
+	all: inherit;
+	height: 16px;
 	margin-top: 8px;
 	display: none;
 }

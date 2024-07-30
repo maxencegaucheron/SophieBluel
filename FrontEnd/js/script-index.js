@@ -160,9 +160,9 @@ function addUserContent() {
     if (loggedInHeader) {
         loggedInHeader.style.display = "flex";
     }
-    const loggedInProjects = document.getElementById("mode_edition_projets");
-    if (loggedInProjects) {
-        loggedInProjects.style.display = "inline";
+    const loggedInButton = document.getElementById("mode_edition_modifier");
+    if (loggedInButton) {
+        loggedInButton.style.display = "inline";
     }
 
     const loggedInCategories = document.querySelector(".categories");
@@ -177,6 +177,5 @@ function addUserContent() {
         loginToLogout.addEventListener("click", function () {
             const removeToken = localStorage.removeItem("user_token");
         })
-
     }
 }
