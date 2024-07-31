@@ -259,7 +259,6 @@ li:hover,
 
 .modale_container {
 	display: none;
-	display: flex;
 	justify-content: center;
 	align-items: center;
 	position: fixed;
@@ -271,7 +270,6 @@ li:hover,
 }
 
 .modale {
-	/*display: none;*/
 	position: fixed;
 	width: 50%;
 	margin: 0;
