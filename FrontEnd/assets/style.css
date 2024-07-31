@@ -142,21 +142,6 @@ table {
 	font-size: 14px;
 }
 
-#mode_edition_header {
-	display: none;
-	justify-content: center;
-	color: white;
-	background-color: black;
-	padding: 20px;
-	width: 100%;
-	font-family: 'Work Sans';
-	font-size: 16px;
-}
-
-#mode_edition_header i {
-	padding-right: 10px;
-}
-
 header {
 	display: flex;
 	justify-content: space-between;
@@ -255,18 +240,48 @@ li:hover,
 	margin-right: 5px;
 }
 
-.modale {
+#mode_edition_header {
+	max-width: 100%;
 	display: none;
-	width: 98%;
-	border-radius: 10%;
+	justify-content: center;
+	color: white;
+	background-color: black;
+	padding: 20px;
 	font-family: 'Work Sans';
+	font-size: 16px;
+}
+
+#mode_edition_header i {
+	padding-right: 10px;
+}
+
+.modale {
+	/*display: none;*/
+	position: fixed;
+	width: 60%;
+	z-index: 2;
+	margin: 0;
+	padding: 30px;
+	border-radius: 20px;
+	font-family: 'Work Sans';
+	background-color: white;
+}
+
+.modale_header {
+	display: flex;
+	justify-content: flex-end;
 }
 
 .modale_bouton {
-	all: inherit;
+	width: 20px;
+	height: 20px;
+	border: 0;
+	background-color: inherit;
+}
+
+.modale_bouton i {
 	display: flex;
 	justify-content: flex-end;
-	margin: 0;
 	font-size: 20px;
 }
 
@@ -274,6 +289,7 @@ li:hover,
 	display: flex;
 	justify-content: center;
 	font-size: 26px;
+	margin: 30px;
 }
 
 .modale hr {
@@ -282,9 +298,24 @@ li:hover,
 }
 
 .modale input {
-	all: inherit;
+	all: unset;
+	border: 0;
+	display: flex;
+	justify-content: center;
+	text-align: center;
 	font-size: 14px;
 	padding: 15px 30px 15px;
+}
+
+.modale_overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.3);
+	z-index: 1;
 }
 
 #portfolio h2 {
