@@ -188,8 +188,6 @@ function addUserContent() {
         modal.style.display = "flex";
         overlay.style.display = "block";
 
-        const modalGallery = document.querySelector(".modal_gallery");
-
         fetch("http://localhost:5678/api/works")
             .then(response => {
                 if (response.ok) {
@@ -218,11 +216,8 @@ function addUserContent() {
                     const worksImage = document.createElement("img");
                     worksImage.src = data[i].imageUrl;
                     worksImage.alt = data[i].title;
-                    const worksCaption = document.createElement("figcaption");
-                    worksCaption.textContent = data[i].title;
                     modalGallery.appendChild(worksContainer);
                     worksContainer.appendChild(worksImage);
-                    worksContainer.appendChild(worksCaption);
                 }
             })
 

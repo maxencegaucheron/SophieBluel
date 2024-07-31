@@ -259,7 +259,7 @@ li:hover,
 
 .modale_container {
 	display: none;
-	/*display: flex;*/
+	display: flex;
 	justify-content: center;
 	align-items: center;
 	position: fixed;
@@ -273,7 +273,7 @@ li:hover,
 .modale {
 	/*display: none;*/
 	position: fixed;
-	width: 60%;
+	width: 50%;
 	margin: 0;
 	padding: 30px;
 	border-radius: 20px;
@@ -330,6 +330,21 @@ li:hover,
 	height: 100%;
 	background: rgba(0, 0, 0, 0.3);
 	z-index: 1;
+}
+
+.modal_gallery {
+	padding: 30px 0px 90px;
+	width: 80%;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-column-gap: 15px;
+	grid-row-gap: 40px;
+}
+
+.modal_gallery img {
+	display: flex;
+	width: 100%;
 }
 
 #portfolio h2 {
