@@ -183,9 +183,52 @@ function addUserContent() {
     const overlay = document.querySelector(".modale_overlay");
 
     openModalButton.addEventListener("click", openModal);
+
     function openModal() {
         modal.style.display = "flex";
         overlay.style.display = "block";
+
+        const modalGallery = document.querySelector(".modal_gallery");
+
+        fetch("http://localhost:5678/api/works")
+            .then(response => {
+                if (response.ok) {
+                    console.log("Works fetched properly 3");
+                    return response.json();
+                } else {
+                    console.log("Request failed:", response.status);
+                    throw new Error("Network response was not ok");
+                }
+            })
+
+            .then(data => {
+                console.log("Data received", data);
+                const modalGallery = document.querySelector(".modal_gallery");
+
+                if (!modalGallery) {
+                    console.error("Element with class \"gallery\" not found.");
+                    return;
+                }
+
+                const worksTotal = data.length;
+
+                for (let i = 0; i < worksTotal; i++) {
+                    const worksContainer = document.createElement("figure");
+                    worksContainer.id = `work${data[i].id}`;
+                    const worksImage = document.createElement("img");
+                    worksImage.src = data[i].imageUrl;
+                    worksImage.alt = data[i].title;
+                    const worksCaption = document.createElement("figcaption");
+                    worksCaption.textContent = data[i].title;
+                    modalGallery.appendChild(worksContainer);
+                    worksContainer.appendChild(worksImage);
+                    worksContainer.appendChild(worksCaption);
+                }
+            })
+
+            .catch(error => {
+                console.log("Erreur:", error);
+            });
 
         const closeModalButton = document.getElementById("modale_bouton_close");
         closeModalButton.addEventListener("click", closeModal);
