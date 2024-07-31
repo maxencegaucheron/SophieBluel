@@ -255,11 +255,23 @@ li:hover,
 	padding-right: 10px;
 }
 
+.modale_container {
+	display: none;
+	/*display: flex;*/
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 2;
+}
+
 .modale {
 	/*display: none;*/
 	position: fixed;
 	width: 60%;
-	z-index: 2;
 	margin: 0;
 	padding: 30px;
 	border-radius: 20px;
@@ -308,10 +320,10 @@ li:hover,
 }
 
 .modale_overlay {
+	display: none;
 	position: fixed;
 	top: 0;
 	left: 0;
-	display: flex;
 	width: 100%;
 	height: 100%;
 	background: rgba(0, 0, 0, 0.3);
