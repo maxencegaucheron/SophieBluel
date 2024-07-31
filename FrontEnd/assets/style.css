@@ -232,11 +232,12 @@ li:hover,
 #mode_edition_modifier {
 	all: inherit;
 	height: 16px;
-	margin-top: 8px;
+	padding: 4px;
+	margin-top: 4px;
 	display: none;
 }
 
-#mode_edition_projets i {
+#mode_edition_modifier i {
 	margin-right: 5px;
 }
 
@@ -249,6 +250,7 @@ li:hover,
 	padding: 20px;
 	font-family: 'Work Sans';
 	font-size: 16px;
+	z-index: 2;
 }
 
 #mode_edition_header i {
@@ -265,7 +267,7 @@ li:hover,
 	height: 100%;
 	top: 0;
 	left: 0;
-	z-index: 2;
+	z-index: 3;
 }
 
 .modale {
@@ -284,14 +286,14 @@ li:hover,
 	justify-content: flex-end;
 }
 
-.modale_bouton {
+#modale_bouton_close {
 	width: 20px;
 	height: 20px;
 	border: 0;
 	background-color: inherit;
 }
 
-.modale_bouton i {
+#modale_bouton_close i {
 	display: flex;
 	justify-content: flex-end;
 	font-size: 20px;

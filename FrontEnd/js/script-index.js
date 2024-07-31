@@ -178,4 +178,21 @@ function addUserContent() {
             const removeToken = localStorage.removeItem("user_token");
         })
     }
+    const openModalButton = document.getElementById("mode_edition_modifier");
+    const modal = document.querySelector(".modale_container");
+    const overlay = document.querySelector(".modale_overlay");
+
+    openModalButton.addEventListener("click", openModal);
+    function openModal() {
+        modal.style.display = "flex";
+        overlay.style.display = "block";
+
+        const closeModalButton = document.getElementById("modale_bouton_close");
+        closeModalButton.addEventListener("click", closeModal);
+        function closeModal() {
+            modal.style.display = "none";
+            overlay.style.display = "none";
+        }
+
+    }
 }
