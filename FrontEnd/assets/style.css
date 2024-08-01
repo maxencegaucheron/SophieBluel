@@ -435,7 +435,7 @@ figure {
 	font-size: 1.2em;
 	text-align: center;
 	margin-bottom: 30px;
-	color: #1D6154;
+	color: red;
 }
 
 input[type="submit"] {
