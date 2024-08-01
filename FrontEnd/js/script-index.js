@@ -214,7 +214,7 @@ function addUserContent() {
                 worksContainer.appendChild(worksImage);
                 const deleteIcon = document.createElement("i");
                 deleteIcon.classList = "fa-solid fa-trash-can delete_icon";
-                deleteIcon.id = `work${data[i].id}`;
+                deleteIcon.id = `delete${data[i].id}`;
                 worksContainer.appendChild(deleteIcon);
             }
         })
