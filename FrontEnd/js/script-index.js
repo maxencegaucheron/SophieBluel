@@ -212,6 +212,9 @@ function addUserContent() {
                 worksImage.alt = data[i].title;
                 modalGallery.appendChild(worksContainer);
                 worksContainer.appendChild(worksImage);
+                const deleteIcon = document.createElement("i");
+                deleteIcon.classList = "fa-solid fa-trash-can delete_icon";
+                worksContainer.appendChild(deleteIcon);
             }
         })
 

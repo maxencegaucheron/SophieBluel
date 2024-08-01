@@ -346,6 +346,21 @@ li:hover,
 	width: 100%;
 }
 
+figure {
+	position: relative;
+}
+
+.delete_icon {
+	color: white;
+	background-color: black;
+	font-size: 12px;
+	padding: 4px;
+	border-radius: 20%;
+	position: absolute;
+	bottom: 76%;
+	left: 70%;
+}
+
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
