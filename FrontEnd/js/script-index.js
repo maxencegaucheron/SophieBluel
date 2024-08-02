@@ -218,8 +218,8 @@ function addUserContent() {
                 worksContainer.appendChild(deleteIcon);
 
                 deleteIcon.addEventListener("click", function () {
-                    console.log("Vous avez cliqué sur le bouton pour supprimer", deleteIcon.id)
-
+                    console.log("Vous avez supprimé", deleteIcon.id)
+                    deleteIcon.parentElement.remove();
                 })
             }
         })
