@@ -214,8 +214,13 @@ function addUserContent() {
                 worksContainer.appendChild(worksImage);
                 const deleteIcon = document.createElement("i");
                 deleteIcon.classList = "fa-solid fa-trash-can delete_icon";
-                deleteIcon.id = `delete${data[i].id}`;
+                deleteIcon.id = `${data[i].title}`;
                 worksContainer.appendChild(deleteIcon);
+
+                deleteIcon.addEventListener("click", function () {
+                    console.log("Vous avez cliqué sur le bouton pour supprimer", deleteIcon.id)
+
+                })
             }
         })
 
