@@ -223,8 +223,14 @@ function addUserContent() {
                     deleteIcon.parentElement.remove();
 
                     const token = localStorage.getItem("user_token");
+                    if (token) {
+                        console.log("Token:", token);
+                    }
+                    else {
+                        console.log("Token not found in LocalStorage");
+                    }
 
-                    fetch("http://localhost:5678/api/works/${worksId.id}", {
+                    fetch(`http://localhost:5678/api/works/${worksId}`, {
                         method: "DELETE",
                         headers: {
                             "Authorization": `Bearer ${token}`,
