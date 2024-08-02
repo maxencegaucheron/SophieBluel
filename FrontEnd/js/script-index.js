@@ -124,7 +124,7 @@ fetch("http://localhost:5678/api/categories")
                             const worksFiltered = allWorks.filter((works) => works.categoryId.toString() === boutonId);
 
                             worksFiltered.forEach(work => {
-                                const worksElement = document.getElementById(`work${work.id}`);
+                                const worksElement = document.getElementById(`work${id}`);
                                 if (worksElement) {
                                     worksElement.style.display = "inline";
                                 } else {
@@ -230,18 +230,19 @@ function addUserContent() {
                         console.log("Token not found in LocalStorage");
                     }
 
-                    fetch(`http://localhost:5678/api/works/${worksId}`, {
+                    fetch("http://localhost:5678/api/works/" + worksId, {
                         method: "DELETE",
                         headers: {
                             "Authorization": `Bearer ${token}`,
-                            "Accept": "*/*"
+                            "Accept": "application/json",
+                            "Content-Type": "application/json"
                         }
                     })
                         .then(response => {
                             if (response.ok) {
-                                console.log("Work ${worksImage.id} deleted");
+                                console.log(`Work ${worksImage.id} deleted`);
                             } else {
-                                console.log("Delete request failed:", response.status);
+                                console.log("Delete request failed:", response.status, worksId);
                             }
                         })
                         .catch(error => {
