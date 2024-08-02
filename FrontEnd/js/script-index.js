@@ -124,7 +124,7 @@ fetch("http://localhost:5678/api/categories")
                             const worksFiltered = allWorks.filter((works) => works.categoryId.toString() === boutonId);
 
                             worksFiltered.forEach(work => {
-                                const worksElement = document.getElementById(`work${id}`);
+                                const worksElement = document.getElementById(`work${work.id}`);
                                 if (worksElement) {
                                     worksElement.style.display = "inline";
                                 } else {
