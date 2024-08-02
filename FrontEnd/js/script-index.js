@@ -214,12 +214,33 @@ function addUserContent() {
                 worksContainer.appendChild(worksImage);
                 const deleteIcon = document.createElement("i");
                 deleteIcon.classList = "fa-solid fa-trash-can delete_icon";
-                deleteIcon.id = `${data[i].title}`;
+                worksImage.id = `${data[i].title}`;
                 worksContainer.appendChild(deleteIcon);
 
                 deleteIcon.addEventListener("click", function () {
-                    console.log("Vous avez supprimé", deleteIcon.id)
+                    const worksId = data[i].id;
+                    console.log("Vous avez supprimé", worksImage.id)
                     deleteIcon.parentElement.remove();
+
+                    const token = localStorage.getItem("user_token");
+
+                    fetch("http://localhost:5678/api/works/${worksId.id}", {
+                        method: "DELETE",
+                        headers: {
+                            "Authorization": `Bearer ${token}`,
+                            "Accept": "*/*"
+                        }
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                console.log("Work ${worksImage.id} deleted");
+                            } else {
+                                console.log("Delete request failed:", response.status);
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Error while trying to delete the work:", error);
+                        })
                 })
             }
         })
