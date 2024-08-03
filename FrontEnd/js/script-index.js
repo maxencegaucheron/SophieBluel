@@ -262,6 +262,14 @@ function addUserContent() {
         modal.style.display = "flex";
         overlay.style.display = "block";
 
+        const addButton = document.getElementById("add_button");
+        addButton.addEventListener("click", addWorks);
+
+        function addWorks() {
+            console.log("Vous avez cliqué sur le bouton Ajouter une photo");
+        }
+
+
         const closeModalButton = document.getElementById("modale_bouton_close");
         closeModalButton.addEventListener("click", closeModal);
         function closeModal() {
