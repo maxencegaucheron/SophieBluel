@@ -279,6 +279,10 @@ function addUserContent() {
             sendWorkButton.style.display = "flex";
         }
 
+        sendWorkButton.addEventListener("click", sendWork);
+        function sendWork() {
+            console.log("Vous avez ajouté un travail à la gallerie")
+        }
 
         const closeModalButton = document.getElementById("modale_bouton_close");
         closeModalButton.addEventListener("click", closeModal);
@@ -286,6 +290,5 @@ function addUserContent() {
             modal.style.display = "none";
             overlay.style.display = "none";
         }
-
     }
 }
