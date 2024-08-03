@@ -334,6 +334,40 @@ li:hover,
 	flex-direction: column;
 }
 
+input[type=file] {
+	all: inherit;
+	justify-content: center;
+	color: transparent;
+	background-color: #CBD6DC;
+	height: 40px;
+	width: 180px;
+	text-align: center;
+	border-radius: 60px;
+}
+
+input[type=file]::file-selector-button {
+	color: transparent;
+	background-color: transparent;
+	border: none;
+	z-index: 2;
+}
+
+#add_file {
+	color: #306685;
+	width: 180px;
+	position: relative;
+	bottom: 28px;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	z-index: 1;
+}
+
+.send_work_form p {
+	color: #444444;
+	font-size: 10px;
+}
+
 .modale_overlay {
 	display: none;
 	position: fixed;
