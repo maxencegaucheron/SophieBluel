@@ -336,25 +336,25 @@ li:hover,
 
 input[type=file] {
 	all: inherit;
-	justify-content: center;
-	color: transparent;
 	background-color: #CBD6DC;
 	height: 40px;
-	width: 180px;
-	text-align: center;
+	width: 190px;
 	border-radius: 60px;
 }
 
 input[type=file]::file-selector-button {
+	all: inherit;
 	color: transparent;
 	background-color: transparent;
 	border: none;
 	z-index: 2;
+	height: 40px;
+	width: 190px;
 }
 
 #add_file {
 	color: #306685;
-	width: 180px;
+	width: 190px;
 	position: relative;
 	bottom: 28px;
 	display: flex;
