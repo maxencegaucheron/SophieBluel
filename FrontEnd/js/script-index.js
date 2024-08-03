@@ -264,9 +264,19 @@ function addUserContent() {
 
         const addButton = document.getElementById("add_button");
         addButton.addEventListener("click", addWorks);
+        const modaleGallery = document.querySelector(".modal_gallery");
+        const modaleTitle = document.querySelector(".modale p");
+        const ajoutPhotoTitle = document.getElementById("ajout_photo");
+        const sendWorkButton = document.getElementById("send_work_button");
+
 
         function addWorks() {
             console.log("Vous avez cliqué sur le bouton Ajouter une photo");
+            modaleGallery.style.display = "none";
+            addButton.style.display = "none";
+            modaleTitle.style.display = "none";
+            ajoutPhotoTitle.style.display = "flex";
+            sendWorkButton.style.display = "flex";
         }
 
 

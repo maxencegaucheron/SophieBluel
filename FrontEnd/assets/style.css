@@ -305,6 +305,10 @@ li:hover,
 	margin: 20px;
 }
 
+#ajout_photo {
+	display: none;
+}
+
 .modale hr {
 	width: 70%;
 	color: #B3B3B3;
@@ -318,6 +322,11 @@ li:hover,
 	text-align: center;
 	font-size: 14px;
 	padding: 15px 30px 15px;
+}
+
+#send_work_button {
+	display: none;
+	background-color: #a7a7a7;
 }
 
 .modale_overlay {
