@@ -329,6 +329,11 @@ li:hover,
 	background-color: #a7a7a7;
 }
 
+.send_work_form {
+	display: none;
+	flex-direction: column;
+}
+
 .modale_overlay {
 	display: none;
 	position: fixed;

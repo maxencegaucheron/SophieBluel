@@ -268,6 +268,7 @@ function addUserContent() {
         const modaleTitle = document.querySelector(".modale p");
         const ajoutPhotoTitle = document.getElementById("ajout_photo");
         const sendWorkButton = document.getElementById("send_work_button");
+        const sendWorkForm = document.querySelector(".send_work_form");
 
 
         function addWorks() {
@@ -277,6 +278,7 @@ function addUserContent() {
             modaleTitle.style.display = "none";
             ajoutPhotoTitle.style.display = "flex";
             sendWorkButton.style.display = "flex";
+            sendWorkForm.style.display = "flex";
         }
 
         sendWorkButton.addEventListener("click", sendWork);
