@@ -401,12 +401,12 @@ figure {
 .delete_icon {
 	color: white;
 	background-color: black;
-	font-size: 12px;
-	padding: 4px;
+	font-size: 0.8vw;
+	padding: 5%;
 	border-radius: 20%;
 	position: absolute;
-	bottom: 76%;
-	left: 70%;
+	top: 6%;
+	right: 8%;
 }
 
 #portfolio h2 {
