@@ -26,23 +26,25 @@
 			<p id="ajout_photo">Ajout photo</p>
 			<div class="modal_gallery"></div>
 			<hr>
-			<input id="add_button" type="submit" value="Ajouter une photo">
-
-			<form class="send_work_form" action="#" method="post">
-				<input type="file" name="image" accept="image/*" required>
-				<label for="file" id="add_file">+ Ajouter photo</label>
-				<p>jpg, png : 4mo max</p>
-				<label for="password">Titre</label>
-				<input type="text" name="title" id="title">
-				<label for="password">Catégorie</label>
-				<select id="category" name="category" required>
-					<option value="" disabled selected></option>
-					<option value="objets">Objets</option>
-					<option value="appartements">Appartements</option>
-					<option value="hotels_et_restaurants">Hotels et restaurants</option>
-				</select>
-				<input id="send_work_button" type="submit" value="Valider">
-			</form>
+			<div class="send_work">
+				<input id="add_button" type="submit" value="Ajouter une photo">
+				<form class="send_work_form" action="#" method="post">
+					<input type="file" name="image" accept="image/*" required>
+					<label for="file" id="add_file">+ Ajouter photo</label>
+					<p>jpg, png : 4mo max</p>
+					<label for="password">Titre</label>
+					<input type="text" name="title" id="title">
+					<label for="password">Catégorie</label>
+					<select id="category" name="category" required>
+						<option value="" disabled selected></option>
+						<option value="objets">Objets</option>
+						<option value="appartements">Appartements</option>
+						<option value="hotels_et_restaurants">Hotels et restaurants</option>
+					</select>
+					<hr>
+					<input id="send_work_button" type="submit" value="Valider">
+				</form>
+			</div>
 
 		</section>
 	</div>

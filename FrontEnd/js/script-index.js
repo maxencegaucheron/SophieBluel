@@ -269,6 +269,7 @@ function addUserContent() {
         const ajoutPhotoTitle = document.getElementById("ajout_photo");
         const sendWorkButton = document.getElementById("send_work_button");
         const sendWorkForm = document.querySelector(".send_work_form");
+        const breakLineModal = document.querySelector(".modale hr")
 
 
         function addWorks() {
@@ -276,6 +277,7 @@ function addUserContent() {
             modaleGallery.style.display = "none";
             addButton.style.display = "none";
             modaleTitle.style.display = "none";
+            breakLineModal.style.display = "none";
             ajoutPhotoTitle.style.display = "flex";
             sendWorkButton.style.display = "flex";
             sendWorkForm.style.display = "flex";
