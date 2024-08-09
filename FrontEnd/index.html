@@ -26,23 +26,29 @@
 			<p id="ajout_photo">Ajout photo</p>
 			<div class="modal_gallery"></div>
 			<hr>
+			<input id="add_button" type="submit" value="Ajouter une photo">
+
 			<div class="send_work">
-				<input id="add_button" type="submit" value="Ajouter une photo">
-				<form class="send_work_form" action="#" method="post">
-					<input type="file" name="image" accept="image/*" required>
-					<label for="file" id="add_file">+ Ajouter photo</label>
-					<p>jpg, png : 4mo max</p>
-					<label for="password">Titre</label>
+				<div class="send_work_image">
+					<i class="fa-regular fa-image"></i>
+					<form action="#" method="post">
+						<input type="file" id="file" name="image" accept="image/*" required>
+						<label for="file" id="add_file">+ Ajouter photo</label>
+						<p>jpg, png : 4mo max</p>
+				</div>
+				<div class="send_work_title_category">
+					<label for="title">Titre</label>
 					<input type="text" name="title" id="title">
-					<label for="password">Catégorie</label>
+					<label for="category">Catégorie</label>
 					<select id="category" name="category" required>
 						<option value="" disabled selected></option>
 						<option value="objets">Objets</option>
 						<option value="appartements">Appartements</option>
 						<option value="hotels_et_restaurants">Hotels et restaurants</option>
 					</select>
-					<hr>
-					<input id="send_work_button" type="submit" value="Valider">
+				</div>
+				<hr>
+				<input id="send_work_button" type="submit" value="Valider">
 				</form>
 			</div>
 
@@ -95,9 +101,9 @@
 				<p>Vous avez un projet ? Discutons-en !</p>
 				<form action="#" method="post">
 					<label for="name">Nom</label>
-					<input type="text" name="name" id="name">
+					<input type="text" name="name" id="name" autocomplete="off">
 					<label for="email">Email</label>
-					<input type="email" name="email" id="email">
+					<input type="email" name="email" id="email" autocomplete="off">
 					<label for="message">Message</label>
 					<textarea name="message" id="message" cols="30" rows="10"></textarea>
 					<input type="submit" value="Envoyer">
