@@ -300,6 +300,15 @@ function addUserContent() {
         returnButton.addEventListener("click", returnModal);
         function returnModal() {
             console.log("Vous avez cliqué sur le bouton Retour");
+            modaleGallery.style.display = "grid";
+            addButton.style.display = "flex";
+            modaleTitle.style.display = "flex";
+            breakLineModal.style.display = "flex";
+            //
+            ajoutPhotoTitle.style.display = "none";
+            sendWorkButton.style.display = "none";
+            sendWorkContainer.style.display = "none";
+            returnButton.style.display = "none";
         }
     }
 }
