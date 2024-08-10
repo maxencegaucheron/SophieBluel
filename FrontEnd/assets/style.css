@@ -432,20 +432,30 @@ input[type=file]::file-selector-button {
 }
 
 .send_work_title_category #category {
-	height: 50px;
+	appearance: none;
+	height: 55px;
 	margin-bottom: 40px;
 	padding-left: 15px;
 	padding-right: 15px;
 	border: none;
 	color: inherit;
+	background-color: transparent;
 	font-size: 14px;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 	color: #444444;
+	z-index: 2;
 }
 
-.send_work_title_category #category:visited {
-	border: none;
+#chevron_down {
+	color: #6C6C6C;
+	font-size: 12px;
+	position: absolute;
+	top: 162%;
+	left: 81%;
+	z-index: 1;
 }
+
+
 
 .modale_overlay {
 	display: none;
