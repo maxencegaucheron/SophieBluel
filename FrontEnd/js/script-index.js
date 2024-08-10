@@ -295,5 +295,11 @@ function addUserContent() {
             modal.style.display = "none";
             overlay.style.display = "none";
         }
+
+        const returnModalButton = document.getElementById("modale_bouton_close");
+        returnButton.addEventListener("click", returnModal);
+        function returnModal() {
+            console.log("Vous avez cliqué sur le bouton Retour");
+        }
     }
 }
