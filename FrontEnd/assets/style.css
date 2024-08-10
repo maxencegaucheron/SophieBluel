@@ -366,6 +366,7 @@ li:hover,
 	color: #3D3D3D;
 	display: flex;
 	flex-direction: column;
+	position: relative;
 }
 
 .send_work_labels {
@@ -436,7 +437,7 @@ input[type=file]::file-selector-button {
 	height: 55px;
 	margin-bottom: 40px;
 	padding-left: 15px;
-	padding-right: 15px;
+	padding-right: 30px;
 	border: none;
 	color: inherit;
 	background-color: transparent;
@@ -450,8 +451,9 @@ input[type=file]::file-selector-button {
 	color: #6C6C6C;
 	font-size: 12px;
 	position: absolute;
-	top: 162%;
-	left: 81%;
+	right: 15px;
+	top: 50%;
+	transform: translateY(35%);
 	z-index: 1;
 }
 
