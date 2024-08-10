@@ -270,7 +270,7 @@ function addUserContent() {
         const sendWorkButton = document.getElementById("send_work_button");
         const sendWorkContainer = document.querySelector(".send_work");
         const breakLineModal = document.querySelector(".modale hr")
-
+        const returnButton = document.getElementById("modale_bouton_return")
 
         function addWorks() {
             console.log("Vous avez cliqué sur le bouton Ajouter une photo");
@@ -281,6 +281,7 @@ function addUserContent() {
             ajoutPhotoTitle.style.display = "flex";
             sendWorkButton.style.display = "flex";
             sendWorkContainer.style.display = "flex";
+            returnButton.style.display = "flex";
         }
 
         sendWorkButton.addEventListener("click", sendWork);

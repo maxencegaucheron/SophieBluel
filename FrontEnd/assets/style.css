@@ -293,8 +293,18 @@ li:hover,
 }
 
 #modale_bouton_close i {
-	display: flex;
-	justify-content: flex-end;
+	font-size: 20px;
+}
+
+#modale_bouton_return {
+	width: 100%;
+	display: none;
+	justify-content: flex-start;
+	border: 0;
+	background-color: inherit;
+}
+
+#modale_bouton_return i {
 	font-size: 20px;
 }
 
@@ -451,7 +461,7 @@ input[type=file]::file-selector-button {
 	color: #6C6C6C;
 	font-size: 12px;
 	position: absolute;
-	right: 15px;
+	right: 25px;
 	top: 50%;
 	transform: translateY(35%);
 	z-index: 1;
