@@ -284,10 +284,46 @@ function addUserContent() {
             returnButton.style.display = "flex";
         }
 
-        sendWorkButton.addEventListener("click", sendWork);
-        function sendWork() {
-            console.log("Vous avez ajouté un travail à la gallerie")
-        }
+        sendWorkButton.addEventListener("click", function () {
+            console.log("Vous avez cliqué sur le bouton Valider")
+        })
+
+        const sendWorkForm = document.getElementById("send_work_form");
+        sendWorkForm.addEventListener("click", function () {
+            console.log("Vous avez ajouté un travail");
+
+            const token = localStorage.getItem("user_token");
+            if (token) {
+                console.log("Token:", token);
+            }
+            else {
+                console.log("Token not found in LocalStorage");
+            }
+
+            const newWorkData = new FormData(sendWorkForm);
+
+            fetch("http://localhost:5678/api/works/", {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Accept": "application/json",
+                },
+                body: newWorkData,
+            })
+
+
+                .then(response => {
+                    if (response.ok) {
+                        console.log("Work added");
+                    } else {
+                        console.log("Add request failed:", response.status);
+                    }
+                })
+                .catch(error => {
+                    console.error("Error while trying to add the work:", error);
+                })
+
+        })
 
         const closeModalButton = document.getElementById("modale_bouton_close");
         closeModalButton.addEventListener("click", closeModal);
@@ -296,7 +332,6 @@ function addUserContent() {
             overlay.style.display = "none";
         }
 
-        const returnModalButton = document.getElementById("modale_bouton_close");
         returnButton.addEventListener("click", returnModal);
         function returnModal() {
             console.log("Vous avez cliqué sur le bouton Retour");
@@ -304,7 +339,6 @@ function addUserContent() {
             addButton.style.display = "flex";
             modaleTitle.style.display = "flex";
             breakLineModal.style.display = "flex";
-            //
             ajoutPhotoTitle.style.display = "none";
             sendWorkButton.style.display = "none";
             sendWorkContainer.style.display = "none";
