@@ -282,6 +282,48 @@ function addUserContent() {
             sendWorkButton.style.display = "flex";
             sendWorkContainer.style.display = "flex";
             returnButton.style.display = "flex";
+
+            ///
+
+            console.log("Starting fetch operation to http://localhost:5678/api/categories");
+
+            fetch("http://localhost:5678/api/categories")
+                .then(response => {
+                    if (response.ok) {
+                        console.log("Categories fetched properly");
+                        return response.json();
+                    } else {
+                        console.log("Request failed:", response.status);
+                        throw new Error("Network response was not ok");
+                    }
+                })
+                .then(data => {
+                    console.log("Data received", data);
+                    const worksCategories = document.querySelector(".categories");
+                    if (!worksCategories) {
+                        console.error("Element with class \"categories\" not found.");
+                        return;
+                    }
+
+                    const categoriesTotal = data.length;
+                    const selectCategory = document.getElementById('category');
+
+                    const option = document.createElement("option");
+                    option.value = "";
+                    option.disabled = true;
+                    option.selected = true;
+                    selectCategory.appendChild(option);
+
+                    for (let i = 0; i < categoriesTotal; i++) {
+
+                        const option = document.createElement("option");
+                        option.textContent = data[i].name;
+                        option.value = data[i].id;
+                        selectCategory.appendChild(option);
+                    }
+                })
+
+
         }
 
         sendWorkButton.addEventListener("click", function () {
