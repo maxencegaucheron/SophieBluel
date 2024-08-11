@@ -218,6 +218,7 @@ function addUserContent() {
                 worksContainer.appendChild(deleteIcon);
 
                 deleteIcon.addEventListener("click", function () {
+
                     const worksId = data[i].id;
                     console.log("Vous avez supprimé", worksImage.id)
                     deleteIcon.parentElement.remove();
@@ -322,8 +323,6 @@ function addUserContent() {
                         selectCategory.appendChild(option);
                     }
                 })
-
-
         }
 
         sendWorkButton.addEventListener("click", function () {
@@ -331,7 +330,9 @@ function addUserContent() {
         })
 
         const sendWorkForm = document.getElementById("send_work_form");
-        sendWorkForm.addEventListener("click", function () {
+
+        sendWorkForm.addEventListener("submit", function (event) {
+            event.preventDefault();
             console.log("Vous avez ajouté un travail");
 
             const token = localStorage.getItem("user_token");
@@ -342,7 +343,7 @@ function addUserContent() {
                 console.log("Token not found in LocalStorage");
             }
 
-            const newWorkData = new FormData(sendWorkForm);
+            const newWorkData = new FormData();
 
             fetch("http://localhost:5678/api/works/", {
                 method: "POST",
@@ -353,10 +354,10 @@ function addUserContent() {
                 body: newWorkData,
             })
 
-
                 .then(response => {
                     if (response.ok) {
                         console.log("Work added");
+
                     } else {
                         console.log("Add request failed:", response.status);
                     }
