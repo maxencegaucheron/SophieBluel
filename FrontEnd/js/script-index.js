@@ -329,7 +329,29 @@ function addUserContent() {
             console.log("Vous avez cliqué sur le bouton Valider")
         })
 
+        const sendFile = document.getElementById("file");
+        const sendWorkImage = document.querySelector(".send_work_image");
         const sendWorkForm = document.getElementById("send_work_form");
+
+        sendFile.addEventListener("input", function () {
+            console.log("Vous avez ajouté un fichier");
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                newImage.src = e.target.result;
+            };
+            reader.readAsDataURL(sendFile.files[0]);
+
+            const newImage = document.createElement("img");
+            newImage.classList.add("new_image_preview");
+            sendWorkImage.appendChild(newImage);
+
+            const sendWorkForm = document.getElementById("send_work_form");
+            const sendWorkIcon = document.getElementById("send_work_icon");
+            sendWorkForm.style.display = "none";
+            //sendWorkForm.style.opacity = "0";
+            sendWorkIcon.style.display = "none";
+        })
 
         sendWorkForm.addEventListener("submit", function (event) {
             event.preventDefault();
