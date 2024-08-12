@@ -334,6 +334,10 @@ function addUserContent() {
         function checkInputs() {
             if (sendFile.files.length > 0 && sendTitle.value.trim() !== "" && sendCategory.value.trim() !== "") {
                 sendWorkButton.style.backgroundColor = "#1D6154";
+                const failedMessage = document.getElementById("error_message");
+                if (failedMessage) {
+                    failedMessage.remove();
+                }
             }
             else {
                 sendWorkButton.style.backgroundColor = "#a7a7a7";
@@ -366,7 +370,8 @@ function addUserContent() {
 
         sendWorkForm.addEventListener("submit", function (event) {
             event.preventDefault();
-            console.log("Vous avez ajouté un travail");
+
+            ///
 
             const token = localStorage.getItem("user_token");
             if (token) {
@@ -376,11 +381,11 @@ function addUserContent() {
                 console.log("Token not found in LocalStorage");
             }
 
-            const newWorkData = new FormData();
             const newFile = document.getElementById("file");
             const newTitle = document.getElementById("title");
             const newCategory = document.getElementById("category");
 
+            const newWorkData = new FormData();
             newWorkData.append("image", newFile.files[0]);
             newWorkData.append("title", newTitle.value);
             newWorkData.append("category", newCategory.value);
@@ -405,6 +410,24 @@ function addUserContent() {
                 .catch(error => {
                     console.error("Error while trying to add the work:", error);
                 })
+            ////
+
+            const failedMessage = document.getElementById("error_message");
+            if (failedMessage) {
+                failedMessage.remove();
+            }
+
+            if (sendFile.files.length === 0 || sendTitle.value.trim() === "" || sendCategory.value.trim() === "") {
+                const errorMessage = document.createElement("p");
+                errorMessage.innerHTML = "Merci de remplir tous les champs.";
+                errorMessage.id = "error_message";
+                const sendWork = document.querySelector(".send_work");
+                sendWork.appendChild(errorMessage);
+            }
+
+            else {
+                console.log("Vous avez ajouté un travail");
+            }
 
         })
 

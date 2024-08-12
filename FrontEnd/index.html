@@ -33,7 +33,7 @@
 				<div class="send_work_image">
 					<i class="fa-regular fa-image" id="send_work_icon"></i>
 					<form id="send_work_form" action="#" method="post">
-						<input type="file" id="file" name="image" accept="image/*" required>
+						<input type="file" id="file" name="image" accept="image/*">
 						<label for="file" id="add_file">+ Ajouter photo</label>
 						<p>jpg, png : 4mo max</p>
 				</div>
@@ -41,11 +41,11 @@
 					<label for="title" class="send_work_labels">Titre</label>
 					<input type="text" name="title" id="title">
 					<label for="category" class="send_work_labels">Catégorie</label>
-					<select id="category" name="category" required>
+					<select id="category" name="category">
 					</select>
 					<i class="fa-solid fa-chevron-down" id="chevron_down"></i>
 				</div>
-				<hr>
+				<hr id="send_work_hr">
 				<input id="send_work_button" type="submit" value="Valider">
 				</form>
 			</div>

@@ -1,4 +1,4 @@
-localStorage.setItem("user_token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcyMzQ3MzMwOCwiZXhwIjoxNzIzNTU5NzA4fQ.CbVXttG6fzCcbOqkQJ2xDHkgb3EUSoyEhXr9wscgJ-8")
+localStorage.setItem("user_token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcyMzQ5NTMwMCwiZXhwIjoxNzIzNTgxNzAwfQ.SOYJMwTrSt9lx6hpQ4FLzdxrT_w6y1aUt5oZ6fCfuNI")
 
 function addListenerAuthentification() {
     const loginForm = document.querySelector(".login_user");
@@ -14,7 +14,6 @@ function addListenerAuthentification() {
         if (failedMessage) {
             failedMessage.remove();
         }
-        else { }
 
         if (login.email === "sophie.bluel@test.tld" && login.password === "S0phie") {
             console.log("Successfully authenticated");

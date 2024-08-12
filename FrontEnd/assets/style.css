@@ -386,13 +386,20 @@ li:hover,
 	position: relative;
 }
 
+
 .send_work_labels {
 	margin-bottom: 10px;
+}
+
+#send_work_hr {
+	margin-top: 20px;
 }
 
 #send_work_button {
 	display: none;
 	background-color: #a7a7a7;
+	margin-top: 20px;
+	margin-bottom: 15px;
 }
 
 .send_work_form {
@@ -592,6 +599,14 @@ figure {
 	text-align: center;
 	margin-bottom: 30px;
 	color: red;
+}
+
+#error_message {
+	font-size: 14px;
+	text-align: center;
+	color: red;
+	padding: 0;
+	margin: 0;
 }
 
 input[type="submit"] {
