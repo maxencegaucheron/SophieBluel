@@ -1,4 +1,4 @@
-localStorage.setItem("user_token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcyMzM4NjUyOCwiZXhwIjoxNzIzNDcyOTI4fQ.8EtUB4E6jjAX9dKLQF0kM2w8xjxV7qcemYAqjyPlnMI")
+localStorage.setItem("user_token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcyMzQ3MzMwOCwiZXhwIjoxNzIzNTU5NzA4fQ.CbVXttG6fzCcbOqkQJ2xDHkgb3EUSoyEhXr9wscgJ-8")
 
 function addListenerAuthentification() {
     const loginForm = document.querySelector(".login_user");
