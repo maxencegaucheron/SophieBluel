@@ -284,8 +284,6 @@ function addUserContent() {
             sendWorkContainer.style.display = "flex";
             returnButton.style.display = "flex";
 
-            ///
-
             console.log("Starting fetch operation to http://localhost:5678/api/categories");
 
             fetch("http://localhost:5678/api/categories")
@@ -325,13 +323,22 @@ function addUserContent() {
                 })
         }
 
-        sendWorkButton.addEventListener("click", function () {
-            console.log("Vous avez cliqué sur le bouton Valider")
-        })
+
 
         const sendFile = document.getElementById("file");
+        const sendTitle = document.getElementById("title");
+        const sendCategory = document.getElementById("category");
         const sendWorkImage = document.querySelector(".send_work_image");
         const sendWorkForm = document.getElementById("send_work_form");
+
+        function checkInputs() {
+            if (sendFile.files.length > 0 && sendTitle.value.trim() !== "" && sendCategory.value.trim() !== "") {
+                sendWorkButton.style.backgroundColor = "#1D6154";
+            }
+            else {
+                sendWorkButton.style.backgroundColor = "#a7a7a7";
+            }
+        }
 
         sendFile.addEventListener("input", function () {
             console.log("Vous avez ajouté un fichier");
@@ -349,9 +356,13 @@ function addUserContent() {
             const sendWorkForm = document.getElementById("send_work_form");
             const sendWorkIcon = document.getElementById("send_work_icon");
             sendWorkForm.style.display = "none";
-            //sendWorkForm.style.opacity = "0";
             sendWorkIcon.style.display = "none";
+
+            checkInputs();
         })
+
+        sendTitle.addEventListener("input", checkInputs);
+        sendCategory.addEventListener("change", checkInputs);
 
         sendWorkForm.addEventListener("submit", function (event) {
             event.preventDefault();
