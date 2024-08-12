@@ -344,6 +344,13 @@ function addUserContent() {
             }
 
             const newWorkData = new FormData();
+            const newFile = document.getElementById("file");
+            const newTitle = document.getElementById("title");
+            const newCategory = document.getElementById("category");
+
+            newWorkData.append("image", newFile.files[0]);
+            newWorkData.append("title", newTitle.value);
+            newWorkData.append("category", newCategory.value);
 
             fetch("http://localhost:5678/api/works/", {
                 method: "POST",
