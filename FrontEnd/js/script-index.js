@@ -187,6 +187,41 @@ function addUserContent() {
     const modal = document.querySelector(".modale_container");
     const overlay = document.querySelector(".modale_overlay");
 
+    // Suppression de travaux. a sortir de la boucle - apres suppression dans le dom - retrouver les fetch all. 
+    function deleteWork(worksId, worksImageId, deleteIcon) {
+        deleteIcon.parentElement.remove();
+        console.log("Vous avez supprimé", worksImageId)
+
+        // Vérification du token
+        const token = localStorage.getItem("user_token");
+        if (token) {
+            console.log("Token:", token);
+        }
+        else {
+            console.log("Token not found in LocalStorage");
+        }
+
+        // Suppression dans l'API
+        fetch("http://localhost:5678/api/works/" + worksId, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            }
+        })
+            .then(response => {
+                if (response.ok) {
+                    console.log(`Work ${worksImageId} deleted`);
+                } else {
+                    console.log("Delete request failed:", response.status, worksId);
+                }
+            })
+            .catch(error => {
+                console.error("Error while trying to delete the work:", error);
+            })
+    }
+
     // Récupération des travaux 3
     fetch("http://localhost:5678/api/works")
         .then(response => {
@@ -224,41 +259,9 @@ function addUserContent() {
                 worksImage.id = `${data[i].title}`;
                 worksContainer.appendChild(deleteIcon);
 
-                // Suppression de travaux. a sortir de la boucle - apres suppression dans le dom - retrouver les fetch all. 
                 deleteIcon.addEventListener("click", function (event) {
                     event.preventDefault();
-                    const worksId = data[i].id;
-                    console.log("Vous avez supprimé", worksImage.id)
-                    deleteIcon.parentElement.remove();
-
-                    // Vérification du token
-                    const token = localStorage.getItem("user_token");
-                    if (token) {
-                        console.log("Token:", token);
-                    }
-                    else {
-                        console.log("Token not found in LocalStorage");
-                    }
-
-                    // Suppression dans l'API
-                    fetch("http://localhost:5678/api/works/" + worksId, {
-                        method: "DELETE",
-                        headers: {
-                            "Authorization": `Bearer ${token}`,
-                            "Accept": "application/json",
-                            "Content-Type": "application/json"
-                        }
-                    })
-                        .then(response => {
-                            if (response.ok) {
-                                console.log(`Work ${worksImage.id} deleted`);
-                            } else {
-                                console.log("Delete request failed:", response.status, worksId);
-                            }
-                        })
-                        .catch(error => {
-                            console.error("Error while trying to delete the work:", error);
-                        })
+                    deleteWork(data[i].id, worksImage.id, deleteIcon);
                 })
             }
         })
@@ -451,7 +454,8 @@ function addUserContent() {
         // Fermeture de la modale
         const closeModalButton = document.getElementById("modale_bouton_close");
         closeModalButton.addEventListener("click", closeModal); // add prevent default ici
-        function closeModal() {
+        function closeModal(event) {
+            event.preventDefault();
             modal.style.display = "none";
             overlay.style.display = "none";
         }
