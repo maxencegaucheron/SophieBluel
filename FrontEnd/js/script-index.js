@@ -395,36 +395,6 @@ function addUserContent() {
                 console.log("Token not found in LocalStorage");
             }
 
-            // Ajout nouveau travail dans l'API
-            const newFile = document.getElementById("file");
-            const newTitle = document.getElementById("title");
-            const newCategory = document.getElementById("category");
-
-            const newWorkData = new FormData();
-            newWorkData.append("image", newFile.files[0]);
-            newWorkData.append("title", newTitle.value);
-            newWorkData.append("category", newCategory.value);
-
-            fetch("http://localhost:5678/api/works/", {
-                method: "POST",
-                headers: {
-                    "Authorization": `Bearer ${token}`,
-                    "Accept": "application/json",
-                },
-                body: newWorkData,
-            })
-                .then(response => {
-                    if (response.ok) {
-                        console.log("Work added");
-
-                    } else {
-                        console.log("Add request failed:", response.status);
-                    }
-                })
-                .catch(error => {
-                    console.error("Error while trying to add the work:", error);
-                })
-
             const failedMessage = document.getElementById("error_message");
             if (failedMessage) {
                 failedMessage.remove();
@@ -437,6 +407,39 @@ function addUserContent() {
                 errorMessage.id = "error_message";
                 const sendWork = document.querySelector(".send_work");
                 sendWork.appendChild(errorMessage);
+            }
+
+            else {
+                // Ajout nouveau travail dans l'API
+                const newFile = document.getElementById("file");
+                const newTitle = document.getElementById("title");
+                const newCategory = document.getElementById("category");
+
+                const newWorkData = new FormData();
+                newWorkData.append("image", newFile.files[0]);
+                newWorkData.append("title", newTitle.value);
+                newWorkData.append("category", newCategory.value);
+
+                fetch("http://localhost:5678/api/works/", {
+                    method: "POST",
+                    headers: {
+                        "Authorization": `Bearer ${token}`,
+                        "Accept": "application/json",
+                    },
+                    body: newWorkData,
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            console.log("Work added");
+
+                        } else {
+                            console.log("Add request failed:", response.status);
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error while trying to add the work:", error);
+                    })
+
             }
         })
 
