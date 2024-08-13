@@ -282,7 +282,10 @@ li:hover,
 	display: none;
 }
 
-.modale p {
+.modale h2 {
+	font-family: 'Work Sans';
+	font-weight: 400;
+	color: black;
 	display: flex;
 	justify-content: center;
 	font-size: 26px;
@@ -350,7 +353,7 @@ figure {
 	align-items: center;
 	justify-content: center;
 	height: 200px;
-	margin: 10px 0 30px;
+	margin: 0 auto;
 }
 
 .send_work i {
@@ -369,7 +372,7 @@ input[type=file] {
 	align-items: center;
 	background-color: #CBD6DC;
 	height: 40px;
-	width: 190px;
+	width: 200px;
 	border-radius: 60px;
 }
 
@@ -379,8 +382,8 @@ input[type=file]::file-selector-button {
 	background-color: transparent;
 	border: none;
 	z-index: 2;
-	height: 40px;
-	width: 190px;
+	height: 60px;
+	width: 200px;
 }
 
 #add_file {
@@ -456,8 +459,12 @@ input[type=file]::file-selector-button {
 	margin-bottom: 10px;
 }
 
+#send_work_labels_title {
+	margin-top: 30px;
+}
+
 .send_work hr {
-	margin-top: 20px;
+	margin-top: 30px;
 	width: 100%;
 	color: #B3B3B3;
 }
@@ -465,7 +472,7 @@ input[type=file]::file-selector-button {
 #send_work_button {
 	display: none;
 	background-color: #a7a7a7;
-	margin-top: 20px;
+	margin-top: 30px;
 	margin-bottom: 15px;
 }
 

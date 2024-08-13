@@ -300,7 +300,7 @@ function addUserContent() {
         const addButton = document.getElementById("add_button");
         addButton.addEventListener("click", addWorks);
         const modaleGallery = document.querySelector(".modal_gallery");
-        const modaleTitle = document.querySelector(".modale p");
+        const modaleTitle = document.querySelector(".modale h2");
         const ajoutPhotoTitle = document.getElementById("ajout_photo");
         const sendWorkButton = document.getElementById("send_work_button");
         const sendWorkContainer = document.querySelector(".send_work");

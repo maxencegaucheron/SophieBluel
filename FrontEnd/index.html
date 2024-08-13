@@ -23,30 +23,30 @@
 				<button id="modale_bouton_return"><i class="fa-solid fa-arrow-left"></i></button>
 				<button id="modale_bouton_close"><i class="fa-solid fa-xmark"></i></button>
 			</div>
-			<p>Galerie photo</p>
-			<p id="ajout_photo">Ajout photo</p>
+			<h2>Galerie photo</h2>
+			<h2 id="ajout_photo">Ajout photo</h2>
 			<div class="modal_gallery"></div>
 			<hr>
 			<input id="add_button" type="submit" value="Ajouter une photo">
 
 			<div class="send_work">
-				<div class="send_work_image">
-					<i class="fa-regular fa-image" id="send_work_icon"></i>
-					<form id="send_work_form" method="post">
+				<form id="send_work_form" method="post">
+					<div class="send_work_image">
+						<i class="fa-regular fa-image" id="send_work_icon"></i>
 						<input type="file" id="file" name="image" accept="image/*">
 						<label for="file" id="add_file">+ Ajouter photo</label>
 						<p>jpg, png : 4mo max</p>
-				</div>
-				<div class="send_work_title_category">
-					<label for="title" class="send_work_labels">Titre</label>
-					<input type="text" name="title" id="title">
-					<label for="category" class="send_work_labels">Catégorie</label>
-					<select id="category" name="category">
-					</select>
-					<i class="fa-solid fa-chevron-down" id="chevron_down"></i>
-				</div>
-				<hr id="send_work_hr">
-				<input id="send_work_button" type="submit" value="Valider">
+					</div>
+					<div class="send_work_title_category">
+						<label for="title" class="send_work_labels" id="send_work_labels_title">Titre</label>
+						<input type="text" name="title" id="title">
+						<label for="category" class="send_work_labels">Catégorie</label>
+						<select id="category" name="category">
+						</select>
+						<i class="fa-solid fa-chevron-down" id="chevron_down"></i>
+					</div>
+					<hr id="send_work_hr">
+					<input id="send_work_button" type="submit" value="Valider">
 				</form>
 			</div>
 
@@ -67,7 +67,7 @@
 			</nav>
 		</header>
 		<main>
-			<section id="introduction">
+			<div id="introduction">
 				<figure>
 					<img src="./assets/images/sophie-bluel.png" alt="">
 				</figure>
@@ -83,7 +83,7 @@
 					<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG,
 						décorateur(trice)</p>
 				</article>
-			</section>
+			</div>
 			<section id="portfolio">
 				<div class="projets">
 					<h2>Mes Projets</h2>
@@ -94,7 +94,7 @@
 				<div class="gallery">
 				</div>
 			</section>
-			<section id="contact">
+			<section id="contact_form">
 				<h2>Contact</h2>
 				<p>Vous avez un projet ? Discutons-en !</p>
 				<form action="#" method="post">
