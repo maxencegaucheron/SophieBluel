@@ -190,7 +190,15 @@ function addUserContent() {
 
     // Suppression de travaux // apres suppression dans le dom - retrouver les fetch all. 
     function deleteWork(worksId, worksImageId, deleteIcon) {
-        deleteIcon.parentElement.remove();
+
+        const modalWork = document.querySelector(`#work${worksId}`);
+        if (modalWork) {
+            modalWork.remove();
+        }
+        const galleryWork = document.querySelector(`#work${worksId}`);
+        if (galleryWork) {
+            galleryWork.remove();
+        }
         console.log("Vous avez supprimé", worksImageId);
 
         // Vérification du token
