@@ -9,7 +9,7 @@ fetch("http://localhost:5678/api/works")
         } else {
             console.log("Request failed:", response.status);
             throw new Error("Network response was not ok");
-        }
+        };
     })
 
     .then(data => {
@@ -35,7 +35,7 @@ fetch("http://localhost:5678/api/works")
             worksGallery.appendChild(worksContainer);
             worksContainer.appendChild(worksImage);
             worksContainer.appendChild(worksCaption);
-        }
+        };
     })
 
     .catch(error => {
@@ -53,7 +53,7 @@ fetch("http://localhost:5678/api/categories")
         } else {
             console.log("Request failed:", response.status);
             throw new Error("Network response was not ok");
-        }
+        };
     })
     .then(data => {
         console.log("Data received", data);
@@ -61,7 +61,7 @@ fetch("http://localhost:5678/api/categories")
         if (!worksCategories) {
             console.error("Element with class \"categories\" not found.");
             return;
-        }
+        };
 
         const categoriesTotal = data.length;
 
@@ -78,7 +78,7 @@ fetch("http://localhost:5678/api/categories")
             categoriesElement.textContent = data[i].name;
             categoriesElement.id = data[i].id;
             worksCategories.appendChild(categoriesElement);
-        }
+        };
 
         // Tri des travaux par catégorie
         for (i = 0; i < categoriesTotal + 1; i++) {
@@ -103,7 +103,7 @@ fetch("http://localhost:5678/api/categories")
                         } else {
                             console.log("Request failed:", response.status);
                             throw new Error("Network response was not ok");
-                        }
+                        };
                     })
 
                     .then(data => {
@@ -112,7 +112,7 @@ fetch("http://localhost:5678/api/categories")
                         if (!worksGallery) {
                             console.error("Element with class \"gallery\" not found.");
                             return;
-                        }
+                        };
 
                         // Affichage de tous les travaux
                         if (boutonId === "0") {
@@ -131,14 +131,15 @@ fetch("http://localhost:5678/api/categories")
                                 const worksElement = document.getElementById(`work${work.id}`);
                                 if (worksElement) {
                                     worksElement.style.display = "inline";
-                                } else {
-                                    console.error(`Element with work.id ${work.id} not found.`);
                                 }
-                            })
-                        }
-                    })
-            })
-        }
+                                else {
+                                    console.error(`Element with work.id ${work.id} not found.`);
+                                };
+                            });
+                        };
+                    });
+            });
+        };
     })
 
     .catch(error => {
@@ -154,8 +155,8 @@ function checkAuthentication() {
     }
     else {
         console.log("User is not connected");
-    }
-}
+    };
+};
 checkAuthentication();
 
 // Ajout du contenu utilisateur
@@ -163,16 +164,16 @@ function addUserContent() {
     const loggedInHeader = document.getElementById("mode_edition_header");
     if (loggedInHeader) {
         loggedInHeader.style.display = "flex";
-    }
+    };
     const loggedInButton = document.getElementById("mode_edition_modifier");
     if (loggedInButton) {
         loggedInButton.style.display = "inline";
-    }
+    };
 
     const loggedInCategories = document.querySelector(".categories");
     if (loggedInCategories) {
         loggedInCategories.style.display = "none";
-    }
+    };
 
     // Déconnexion de l'utilisateur
     const loginToLogout = document.getElementById("login");
@@ -181,16 +182,16 @@ function addUserContent() {
         loginToLogout.href = "./index.html";
         loginToLogout.addEventListener("click", function () {
             const removeToken = localStorage.removeItem("user_token");
-        })
-    }
+        });
+    };
     const openModalButton = document.getElementById("mode_edition_modifier");
     const modal = document.querySelector(".modale_container");
     const overlay = document.querySelector(".modale_overlay");
 
-    // Suppression de travaux. a sortir de la boucle - apres suppression dans le dom - retrouver les fetch all. 
+    // Suppression de travaux // apres suppression dans le dom - retrouver les fetch all. 
     function deleteWork(worksId, worksImageId, deleteIcon) {
         deleteIcon.parentElement.remove();
-        console.log("Vous avez supprimé", worksImageId)
+        console.log("Vous avez supprimé", worksImageId);
 
         // Vérification du token
         const token = localStorage.getItem("user_token");
@@ -199,7 +200,7 @@ function addUserContent() {
         }
         else {
             console.log("Token not found in LocalStorage");
-        }
+        };
 
         // Suppression dans l'API
         fetch("http://localhost:5678/api/works/" + worksId, {
@@ -220,7 +221,7 @@ function addUserContent() {
             .catch(error => {
                 console.error("Error while trying to delete the work:", error);
             })
-    }
+    };
 
     // Récupération des travaux 3
     fetch("http://localhost:5678/api/works")
@@ -231,7 +232,7 @@ function addUserContent() {
             } else {
                 console.log("Request failed:", response.status);
                 throw new Error("Network response was not ok");
-            }
+            };
         })
 
         .then(data => {
@@ -241,7 +242,7 @@ function addUserContent() {
             if (!modalGallery) {
                 console.error("Element with class \"gallery\" not found.");
                 return;
-            }
+            };
 
             const worksTotal = data.length;
 
@@ -262,8 +263,8 @@ function addUserContent() {
                 deleteIcon.addEventListener("click", function (event) {
                     event.preventDefault();
                     deleteWork(data[i].id, worksImage.id, deleteIcon);
-                })
-            }
+                });
+            };
         })
 
         .catch(error => {
@@ -285,8 +286,8 @@ function addUserContent() {
         const ajoutPhotoTitle = document.getElementById("ajout_photo");
         const sendWorkButton = document.getElementById("send_work_button");
         const sendWorkContainer = document.querySelector(".send_work");
-        const breakLineModal = document.querySelector(".modale hr")
-        const returnButton = document.getElementById("modale_bouton_return")
+        const breakLineModal = document.querySelector(".modale hr");
+        const returnButton = document.getElementById("modale_bouton_return");
 
         // Deuxième page de la modale
         function addWorks(event) {
@@ -312,7 +313,7 @@ function addUserContent() {
                     } else {
                         console.log("Request failed:", response.status);
                         throw new Error("Network response was not ok");
-                    }
+                    };
                 })
                 .then(data => {
                     console.log("Data received", data);
@@ -320,7 +321,7 @@ function addUserContent() {
                     if (!worksCategories) {
                         console.error("Element with class \"categories\" not found.");
                         return;
-                    }
+                    };
 
                     // Ajout des catégories dans le formulaire
                     const categoriesTotal = data.length;
@@ -339,9 +340,9 @@ function addUserContent() {
                         option.textContent = data[i].name;
                         option.value = data[i].id;
                         selectCategory.appendChild(option);
-                    }
-                })
-        }
+                    };
+                });
+        };
 
         // Fermeture de la modale
         const closeModalButton = document.getElementById("modale_bouton_close");
@@ -349,12 +350,12 @@ function addUserContent() {
         function closeModal() {
             modal.style.display = "none";
             overlay.style.display = "none";
-        }
+        };
 
         closeModalButton.addEventListener("click", function (event) {
             event.preventDefault();
             closeModal();
-        }); // add prevent default ici
+        });
 
         // Retour à la première page de la modale
         returnButton.addEventListener("click", returnModal);
@@ -369,7 +370,7 @@ function addUserContent() {
             sendWorkButton.style.display = "none";
             sendWorkContainer.style.display = "none";
             returnButton.style.display = "none";
-        }
+        };
 
         const sendFile = document.getElementById("file");
         const sendTitle = document.getElementById("title");
@@ -389,7 +390,7 @@ function addUserContent() {
             else {
                 sendWorkButton.style.backgroundColor = "#a7a7a7";
             }
-        }
+        };
 
         // Ajout d'un fichier dans le formulaire
         sendFile.addEventListener("input", function (event) {
@@ -412,7 +413,7 @@ function addUserContent() {
             sendWorkIcon.style.display = "none";
 
             checkInputs();
-        })
+        });
 
         sendTitle.addEventListener("input", checkInputs);
         sendCategory.addEventListener("change", checkInputs);
@@ -428,12 +429,12 @@ function addUserContent() {
             }
             else {
                 console.log("Token not found in LocalStorage");
-            }
+            };
 
             const failedMessage = document.getElementById("error_message");
             if (failedMessage) {
                 failedMessage.remove();
-            }
+            };
 
             // Message d'erreur si tous les champs ne sont pas remplis
             if (sendFile.files.length === 0 || sendTitle.value.trim() === "" || sendCategory.value.trim() === "") {
@@ -475,7 +476,7 @@ function addUserContent() {
                             errorMessage.id = "error_message";
                             const sendWork = document.querySelector(".send_work");
                             sendWork.appendChild(errorMessage);
-                        }
+                        };
                     })
 
                     .then(data => {
@@ -484,7 +485,7 @@ function addUserContent() {
                         if (!worksGallery) {
                             console.error("Element with class \"gallery\" not found.");
                             return;
-                        }
+                        };
 
                         const worksContainer = document.createElement("figure");
                         worksContainer.id = `work${data.id}`;
@@ -501,8 +502,8 @@ function addUserContent() {
                     })
                     .catch(error => {
                         console.error("Error while trying to add the work:", error);
-                    })
-            }
-        })
-    }
-}
+                    });
+            };
+        });
+    };
+};
