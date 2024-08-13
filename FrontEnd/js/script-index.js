@@ -273,7 +273,8 @@ function addUserContent() {
     // Ouverture de la modale
     openModalButton.addEventListener("click", openModal);
 
-    function openModal() {
+    function openModal(event) {
+        event.preventDefault();
         modal.style.display = "flex";
         overlay.style.display = "block";
 
@@ -288,7 +289,8 @@ function addUserContent() {
         const returnButton = document.getElementById("modale_bouton_return")
 
         // Deuxième page de la modale
-        function addWorks() {
+        function addWorks(event) {
+            event.preventDefault();
             console.log("Vous avez cliqué sur le bouton Ajouter une photo");
             modaleGallery.style.display = "none";
             addButton.style.display = "none";
@@ -361,7 +363,8 @@ function addUserContent() {
         }
 
         // Ajout d'un fichier dans le formulaire
-        sendFile.addEventListener("input", function () {
+        sendFile.addEventListener("input", function (event) {
+            event.preventDefault();
             console.log("Vous avez ajouté un fichier");
 
             const reader = new FileReader();
@@ -447,22 +450,26 @@ function addUserContent() {
                     .catch(error => {
                         console.error("Error while trying to add the work:", error);
                     })
-
             }
         })
 
         // Fermeture de la modale
         const closeModalButton = document.getElementById("modale_bouton_close");
-        closeModalButton.addEventListener("click", closeModal); // add prevent default ici
-        function closeModal(event) {
-            event.preventDefault();
+
+        function closeModal() {
             modal.style.display = "none";
             overlay.style.display = "none";
         }
 
+        closeModalButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            closeModal();
+        }); // add prevent default ici
+
         // Retour à la première page de la modale
         returnButton.addEventListener("click", returnModal);
-        function returnModal() {
+        function returnModal(event) {
+            event.preventDefault();
             console.log("Vous avez cliqué sur le bouton Retour");
             modaleGallery.style.display = "grid";
             addButton.style.display = "flex";
