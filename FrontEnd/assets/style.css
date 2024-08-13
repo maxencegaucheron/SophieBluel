@@ -229,33 +229,6 @@ li:hover,
 	margin-right: 20px;
 }
 
-#mode_edition_modifier {
-	all: inherit;
-	height: 16px;
-	padding: 4px;
-	margin-top: 4px;
-	display: none;
-}
-
-#mode_edition_modifier i {
-	margin-right: 5px;
-}
-
-#mode_edition_header {
-	max-width: 100%;
-	display: none;
-	justify-content: center;
-	color: white;
-	background-color: black;
-	padding: 20px;
-	font-family: 'Work Sans';
-	font-size: 16px;
-}
-
-#mode_edition_header i {
-	padding-right: 10px;
-}
-
 .modale_container {
 	display: none;
 	justify-content: center;
@@ -285,17 +258,6 @@ li:hover,
 	justify-content: flex-end;
 }
 
-#modale_bouton_close {
-	width: 20px;
-	height: 20px;
-	border: 0;
-	background-color: inherit;
-}
-
-#modale_bouton_close i {
-	font-size: 20px;
-}
-
 #modale_bouton_return {
 	width: 100%;
 	display: none;
@@ -304,8 +266,20 @@ li:hover,
 	background-color: inherit;
 }
 
-#modale_bouton_return i {
+#modale_bouton_close {
+	width: 20px;
+	height: 20px;
+	border: 0;
+	background-color: inherit;
+}
+
+#modale_bouton_return i,
+#modale_bouton_close i {
 	font-size: 20px;
+}
+
+#ajout_photo {
+	display: none;
 }
 
 .modale p {
@@ -315,17 +289,23 @@ li:hover,
 	margin: 20px;
 }
 
-#ajout_photo {
-	display: none;
+.modal_gallery {
+	padding: 30px 0px 60px;
+	width: 80%;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-column-gap: 15px;
+	grid-row-gap: 30px;
+}
+
+.modal_gallery img {
+	display: flex;
+	width: 100%;
 }
 
 .modale hr {
 	width: 80%;
-	color: #B3B3B3;
-}
-
-.send_work hr {
-	width: 100%;
 	color: #B3B3B3;
 }
 
@@ -337,6 +317,21 @@ li:hover,
 	text-align: center;
 	font-size: 14px;
 	padding: 15px 30px 15px;
+}
+
+figure {
+	position: relative;
+}
+
+.delete_icon {
+	color: white;
+	background-color: black;
+	font-size: 0.8vw;
+	padding: 5%;
+	border-radius: 20%;
+	position: absolute;
+	top: 6%;
+	right: 8%;
 }
 
 .send_work {
@@ -358,48 +353,10 @@ li:hover,
 	margin: 10px 0 30px;
 }
 
-.new_image_preview {
-	height: 100%;
-	object-fit: contain;
-}
-
 .send_work i {
 	padding: 20px 0 10px;
 	color: #B9C5CC;
 	font-size: 80px;
-}
-
-.send_work p {
-	color: #444444;
-	position: relative;
-	bottom: 5px;
-	font-size: 10px;
-	padding: 0 0 20px;
-	margin: 0;
-}
-
-.send_work_title_category {
-	font-size: 14px;
-	color: #3D3D3D;
-	display: flex;
-	flex-direction: column;
-	position: relative;
-}
-
-
-.send_work_labels {
-	margin-bottom: 10px;
-}
-
-#send_work_hr {
-	margin-top: 20px;
-}
-
-#send_work_button {
-	display: none;
-	background-color: #a7a7a7;
-	margin-top: 20px;
-	margin-bottom: 15px;
 }
 
 .send_work_form {
@@ -437,12 +394,26 @@ input[type=file]::file-selector-button {
 	z-index: 1;
 }
 
-.send_work_form {
-	width: 80%;
-	display: flex;
-	justify-content: center;
-	font-family: 'Work sans';
+.send_work p {
+	color: #444444;
+	position: relative;
+	bottom: 5px;
+	font-size: 10px;
+	padding: 0 0 20px;
+	margin: 0;
+}
+
+.new_image_preview {
+	height: 100%;
+	object-fit: contain;
+}
+
+.send_work_title_category {
+	font-size: 14px;
 	color: #3D3D3D;
+	display: flex;
+	flex-direction: column;
+	position: relative;
 }
 
 .send_work_title_category #title {
@@ -481,7 +452,37 @@ input[type=file]::file-selector-button {
 	z-index: 1;
 }
 
+.send_work_labels {
+	margin-bottom: 10px;
+}
 
+.send_work hr {
+	margin-top: 20px;
+	width: 100%;
+	color: #B3B3B3;
+}
+
+#send_work_button {
+	display: none;
+	background-color: #a7a7a7;
+	margin-top: 20px;
+	margin-bottom: 15px;
+}
+
+#mode_edition_header {
+	max-width: 100%;
+	display: none;
+	justify-content: center;
+	color: white;
+	background-color: black;
+	padding: 20px;
+	font-family: 'Work Sans';
+	font-size: 16px;
+}
+
+#mode_edition_header i {
+	padding-right: 10px;
+}
 
 .modale_overlay {
 	display: none;
@@ -494,34 +495,16 @@ input[type=file]::file-selector-button {
 	z-index: 1;
 }
 
-.modal_gallery {
-	padding: 30px 0px 60px;
-	width: 80%;
-	margin: 0 auto;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-	grid-column-gap: 15px;
-	grid-row-gap: 30px;
+#mode_edition_modifier {
+	all: inherit;
+	height: 16px;
+	padding: 4px;
+	margin-top: 4px;
+	display: none;
 }
 
-.modal_gallery img {
-	display: flex;
-	width: 100%;
-}
-
-figure {
-	position: relative;
-}
-
-.delete_icon {
-	color: white;
-	background-color: black;
-	font-size: 0.8vw;
-	padding: 5%;
-	border-radius: 20%;
-	position: absolute;
-	top: 6%;
-	right: 8%;
+#mode_edition_modifier i {
+	margin-right: 5px;
 }
 
 #portfolio h2 {
