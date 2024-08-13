@@ -434,6 +434,11 @@ function addUserContent() {
 
                         } else {
                             console.log("Add request failed:", response.status);
+                            const errorMessage = document.createElement("p");
+                            errorMessage.innerHTML = "Un problème est survenu lors de l'envoi du travail.";
+                            errorMessage.id = "error_message";
+                            const sendWork = document.querySelector(".send_work");
+                            sendWork.appendChild(errorMessage);
                         }
                     })
                     .catch(error => {
