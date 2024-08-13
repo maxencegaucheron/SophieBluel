@@ -188,7 +188,7 @@ function addUserContent() {
     const modal = document.querySelector(".modale_container");
     const overlay = document.querySelector(".modale_overlay");
 
-    // Suppression de travaux // apres suppression dans le dom - retrouver les fetch all. 
+    // Suppression de travaux
     function deleteWork(worksId, worksImageId) {
 
         const modalWork = document.querySelector(`#work${worksId}`);
