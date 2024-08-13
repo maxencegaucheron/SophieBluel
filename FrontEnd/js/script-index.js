@@ -415,20 +415,23 @@ function addUserContent() {
             event.preventDefault();
             console.log("Vous avez ajouté un fichier");
 
+            const newImage = document.createElement("img");
+            newImage.classList.add("new_image_preview");
             const reader = new FileReader();
             reader.onload = function (e) {
                 newImage.src = e.target.result;
             };
             reader.readAsDataURL(sendFile.files[0]);
-
-            const newImage = document.createElement("img");
-            newImage.classList.add("new_image_preview");
             sendWorkImage.appendChild(newImage);
 
-            const sendWorkForm = document.getElementById("send_work_form");
+            const sendWorkButton = document.getElementById("add_file");
             const sendWorkIcon = document.getElementById("send_work_icon");
-            sendWorkForm.style.display = "none";
+            const sendWorkP = document.getElementById("send_work_p");
+            const sendWorkInput = document.querySelector(".send_work input");
+            sendWorkButton.style.display = "none";
             sendWorkIcon.style.display = "none";
+            sendWorkP.style.display = "none";
+            sendWorkInput.style.display = "none";
 
             checkInputs();
         });
