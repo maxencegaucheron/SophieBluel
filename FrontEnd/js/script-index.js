@@ -224,7 +224,7 @@ function addUserContent() {
                 worksImage.id = `${data[i].title}`;
                 worksContainer.appendChild(deleteIcon);
 
-                // Suppression de travaux
+                // Suppression de travaux. a sortir de la boucle - apres suppression dans le dom - retrouver les fetch all. 
                 deleteIcon.addEventListener("click", function (event) {
                     event.preventDefault();
                     const worksId = data[i].id;
@@ -450,7 +450,7 @@ function addUserContent() {
 
         // Fermeture de la modale
         const closeModalButton = document.getElementById("modale_bouton_close");
-        closeModalButton.addEventListener("click", closeModal);
+        closeModalButton.addEventListener("click", closeModal); // add prevent default ici
         function closeModal() {
             modal.style.display = "none";
             overlay.style.display = "none";

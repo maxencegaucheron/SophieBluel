@@ -1,5 +1,5 @@
 // Stockage du token
-localStorage.setItem("user_token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcyMzUzODUxMiwiZXhwIjoxNzIzNjI0OTEyfQ.H7Xj_oXIGuhB_Z5j_RszL8ZXjnGKns0FegBxqi7dNUk")
+localStorage.setItem("user_token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcyMzU0MTUxOCwiZXhwIjoxNzIzNjI3OTE4fQ.6cX8JU6egAYOOJCVJp-00rjrNBvjORwdO2dYJnnShKs")
 
 // Connexion de l'utilisateur
 function addListenerAuthentification() {
