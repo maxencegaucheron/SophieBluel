@@ -326,6 +326,7 @@ function addUserContent() {
                     const categoriesTotal = data.length;
                     const selectCategory = document.getElementById('category');
 
+                    selectCategory.innerHTML = "";
                     const option = document.createElement("option");
                     option.value = "";
                     option.disabled = true;
