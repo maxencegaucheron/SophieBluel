@@ -343,6 +343,34 @@ function addUserContent() {
                 })
         }
 
+        // Fermeture de la modale
+        const closeModalButton = document.getElementById("modale_bouton_close");
+
+        function closeModal() {
+            modal.style.display = "none";
+            overlay.style.display = "none";
+        }
+
+        closeModalButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            closeModal();
+        }); // add prevent default ici
+
+        // Retour à la première page de la modale
+        returnButton.addEventListener("click", returnModal);
+        function returnModal(event) {
+            event.preventDefault();
+            console.log("Vous avez cliqué sur le bouton Retour");
+            modaleGallery.style.display = "grid";
+            addButton.style.display = "flex";
+            modaleTitle.style.display = "flex";
+            breakLineModal.style.display = "flex";
+            ajoutPhotoTitle.style.display = "none";
+            sendWorkButton.style.display = "none";
+            sendWorkContainer.style.display = "none";
+            returnButton.style.display = "none";
+        }
+
         const sendFile = document.getElementById("file");
         const sendTitle = document.getElementById("title");
         const sendCategory = document.getElementById("category");
@@ -437,7 +465,8 @@ function addUserContent() {
                 })
                     .then(response => {
                         if (response.ok) {
-                            console.log("Work added");
+                            console.log("Work added:", newTitle.value);
+                            return response.json();
 
                         } else {
                             console.log("Add request failed:", response.status);
@@ -448,38 +477,32 @@ function addUserContent() {
                             sendWork.appendChild(errorMessage);
                         }
                     })
+
+                    .then(data => {
+                        // Affichage du nouveau travail dans la gallerie
+                        const worksGallery = document.querySelector(".gallery");
+                        if (!worksGallery) {
+                            console.error("Element with class \"gallery\" not found.");
+                            return;
+                        }
+
+                        const worksContainer = document.createElement("figure");
+                        worksContainer.id = `work${data.id}`;
+                        const worksImage = document.createElement("img");
+                        worksImage.src = data.imageUrl;
+                        worksImage.alt = data.title;
+                        const worksCaption = document.createElement("figcaption");
+                        worksCaption.textContent = data.title;
+                        worksGallery.appendChild(worksContainer);
+                        worksContainer.appendChild(worksImage);
+                        worksContainer.appendChild(worksCaption);
+
+                        closeModal();
+                    })
                     .catch(error => {
                         console.error("Error while trying to add the work:", error);
                     })
             }
         })
-
-        // Fermeture de la modale
-        const closeModalButton = document.getElementById("modale_bouton_close");
-
-        function closeModal() {
-            modal.style.display = "none";
-            overlay.style.display = "none";
-        }
-
-        closeModalButton.addEventListener("click", function (event) {
-            event.preventDefault();
-            closeModal();
-        }); // add prevent default ici
-
-        // Retour à la première page de la modale
-        returnButton.addEventListener("click", returnModal);
-        function returnModal(event) {
-            event.preventDefault();
-            console.log("Vous avez cliqué sur le bouton Retour");
-            modaleGallery.style.display = "grid";
-            addButton.style.display = "flex";
-            modaleTitle.style.display = "flex";
-            breakLineModal.style.display = "flex";
-            ajoutPhotoTitle.style.display = "none";
-            sendWorkButton.style.display = "none";
-            sendWorkContainer.style.display = "none";
-            returnButton.style.display = "none";
-        }
     }
 }
