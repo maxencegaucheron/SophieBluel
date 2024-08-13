@@ -23,6 +23,7 @@ fetch("http://localhost:5678/api/works")
 
         const worksTotal = data.length;
 
+        // Affichage des travaux
         for (let i = 0; i < worksTotal; i++) {
             const worksContainer = document.createElement("figure");
             worksContainer.id = `work${data[i].id}`;
@@ -64,6 +65,7 @@ fetch("http://localhost:5678/api/categories")
 
         const categoriesTotal = data.length;
 
+        // Affichage des boutons catégories
         const categoriesElement = document.createElement("p");
         categoriesElement.textContent = "Tous";
         categoriesElement.id = "0";
@@ -78,7 +80,7 @@ fetch("http://localhost:5678/api/categories")
             worksCategories.appendChild(categoriesElement);
         }
 
-        // Boucle pour trier les travaux au clic
+        // Tri des travaux par catégorie
         for (i = 0; i < categoriesTotal + 1; i++) {
             let bouton = document.getElementById(i.toString());
             bouton.addEventListener("click", function () {
@@ -86,11 +88,12 @@ fetch("http://localhost:5678/api/categories")
 
                 let boutonId = bouton.id;
 
-                // Modification des classes
+                // Changement des classes
                 let boutonsAll = document.querySelectorAll("p");
                 boutonsAll.forEach(bouton => bouton.classList.remove("p_selected"));
                 bouton.classList.add("p_selected");
 
+                // Récupération des travaux 2
                 console.log("Starting fetch operation to http://localhost:5678/api/works");
                 fetch("http://localhost:5678/api/works")
                     .then(response => {
@@ -111,12 +114,13 @@ fetch("http://localhost:5678/api/categories")
                             return;
                         }
 
+                        // Affichage de tous les travaux
                         if (boutonId === "0") {
                             const works = worksGallery.querySelectorAll("figure");
                             works.forEach(work => work.style.display = "inline");
                         }
                         else {
-                            // Filtrage des travaux 
+                            // Filtrage des travaux par catégorie
                             let allWorks = data;
                             const works = worksGallery.querySelectorAll("figure");
                             works.forEach(work => work.style.display = "none");
@@ -135,14 +139,13 @@ fetch("http://localhost:5678/api/categories")
                     })
             })
         }
-
     })
 
     .catch(error => {
         console.log("Erreur:", error);
     })
 
-// Quand utilisateur connecté
+// Vérification de l'authentification
 function checkAuthentication() {
     const token = localStorage.getItem("user_token");
     if (token) {
@@ -155,6 +158,7 @@ function checkAuthentication() {
 }
 checkAuthentication();
 
+// Ajout du contenu utilisateur
 function addUserContent() {
     const loggedInHeader = document.getElementById("mode_edition_header");
     if (loggedInHeader) {
@@ -170,6 +174,7 @@ function addUserContent() {
         loggedInCategories.style.display = "none";
     }
 
+    // Déconnexion de l'utilisateur
     const loginToLogout = document.getElementById("login");
     if (loginToLogout) {
         loginToLogout.textContent = "logout";
@@ -182,6 +187,7 @@ function addUserContent() {
     const modal = document.querySelector(".modale_container");
     const overlay = document.querySelector(".modale_overlay");
 
+    // Récupération des travaux 3
     fetch("http://localhost:5678/api/works")
         .then(response => {
             if (response.ok) {
@@ -204,6 +210,7 @@ function addUserContent() {
 
             const worksTotal = data.length;
 
+            // Affichage des travaux dans la modale
             for (let i = 0; i < worksTotal; i++) {
                 const worksContainer = document.createElement("figure");
                 worksContainer.id = `work${data[i].id}`;
@@ -217,12 +224,14 @@ function addUserContent() {
                 worksImage.id = `${data[i].title}`;
                 worksContainer.appendChild(deleteIcon);
 
-                deleteIcon.addEventListener("click", function () {
-
+                // Suppression de travaux
+                deleteIcon.addEventListener("click", function (event) {
+                    event.preventDefault();
                     const worksId = data[i].id;
                     console.log("Vous avez supprimé", worksImage.id)
                     deleteIcon.parentElement.remove();
 
+                    // Vérification du token
                     const token = localStorage.getItem("user_token");
                     if (token) {
                         console.log("Token:", token);
@@ -231,6 +240,7 @@ function addUserContent() {
                         console.log("Token not found in LocalStorage");
                     }
 
+                    // Suppression dans l'API
                     fetch("http://localhost:5678/api/works/" + worksId, {
                         method: "DELETE",
                         headers: {
@@ -257,6 +267,7 @@ function addUserContent() {
             console.log("Erreur:", error);
         });
 
+    // Ouverture de la modale
     openModalButton.addEventListener("click", openModal);
 
     function openModal() {
@@ -273,6 +284,7 @@ function addUserContent() {
         const breakLineModal = document.querySelector(".modale hr")
         const returnButton = document.getElementById("modale_bouton_return")
 
+        // Deuxième page de la modale
         function addWorks() {
             console.log("Vous avez cliqué sur le bouton Ajouter une photo");
             modaleGallery.style.display = "none";
@@ -284,12 +296,13 @@ function addUserContent() {
             sendWorkContainer.style.display = "flex";
             returnButton.style.display = "flex";
 
+            // Récupération des catégories 2
             console.log("Starting fetch operation to http://localhost:5678/api/categories");
 
             fetch("http://localhost:5678/api/categories")
                 .then(response => {
                     if (response.ok) {
-                        console.log("Categories fetched properly");
+                        console.log("Categories fetched properly 2");
                         return response.json();
                     } else {
                         console.log("Request failed:", response.status);
@@ -304,6 +317,7 @@ function addUserContent() {
                         return;
                     }
 
+                    // Ajout des catégories dans le formulaire
                     const categoriesTotal = data.length;
                     const selectCategory = document.getElementById('category');
 
@@ -323,14 +337,13 @@ function addUserContent() {
                 })
         }
 
-
-
         const sendFile = document.getElementById("file");
         const sendTitle = document.getElementById("title");
         const sendCategory = document.getElementById("category");
         const sendWorkImage = document.querySelector(".send_work_image");
         const sendWorkForm = document.getElementById("send_work_form");
 
+        // Changement du bouton valider si tous les champs sont remplis
         function checkInputs() {
             if (sendFile.files.length > 0 && sendTitle.value.trim() !== "" && sendCategory.value.trim() !== "") {
                 sendWorkButton.style.backgroundColor = "#1D6154";
@@ -344,6 +357,7 @@ function addUserContent() {
             }
         }
 
+        // Ajout d'un fichier dans le formulaire
         sendFile.addEventListener("input", function () {
             console.log("Vous avez ajouté un fichier");
 
@@ -368,11 +382,11 @@ function addUserContent() {
         sendTitle.addEventListener("input", checkInputs);
         sendCategory.addEventListener("change", checkInputs);
 
+        // Envoi du formulaire pour ajouter un travail
         sendWorkForm.addEventListener("submit", function (event) {
             event.preventDefault();
 
-            ///
-
+            // Vérification du token
             const token = localStorage.getItem("user_token");
             if (token) {
                 console.log("Token:", token);
@@ -381,6 +395,7 @@ function addUserContent() {
                 console.log("Token not found in LocalStorage");
             }
 
+            // Ajout nouveau travail dans l'API
             const newFile = document.getElementById("file");
             const newTitle = document.getElementById("title");
             const newCategory = document.getElementById("category");
@@ -398,7 +413,6 @@ function addUserContent() {
                 },
                 body: newWorkData,
             })
-
                 .then(response => {
                     if (response.ok) {
                         console.log("Work added");
@@ -410,13 +424,13 @@ function addUserContent() {
                 .catch(error => {
                     console.error("Error while trying to add the work:", error);
                 })
-            ////
 
             const failedMessage = document.getElementById("error_message");
             if (failedMessage) {
                 failedMessage.remove();
             }
 
+            // Message d'erreur si tous les champs ne sont pas remplis
             if (sendFile.files.length === 0 || sendTitle.value.trim() === "" || sendCategory.value.trim() === "") {
                 const errorMessage = document.createElement("p");
                 errorMessage.innerHTML = "Merci de remplir tous les champs.";
@@ -424,13 +438,9 @@ function addUserContent() {
                 const sendWork = document.querySelector(".send_work");
                 sendWork.appendChild(errorMessage);
             }
-
-            else {
-                console.log("Vous avez ajouté un travail");
-            }
-
         })
 
+        // Fermeture de la modale
         const closeModalButton = document.getElementById("modale_bouton_close");
         closeModalButton.addEventListener("click", closeModal);
         function closeModal() {
@@ -438,6 +448,7 @@ function addUserContent() {
             overlay.style.display = "none";
         }
 
+        // Retour à la première page de la modale
         returnButton.addEventListener("click", returnModal);
         function returnModal() {
             console.log("Vous avez cliqué sur le bouton Retour");

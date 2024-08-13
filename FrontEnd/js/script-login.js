@@ -1,5 +1,7 @@
+// Stockage du token
 localStorage.setItem("user_token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcyMzQ5NTMwMCwiZXhwIjoxNzIzNTgxNzAwfQ.SOYJMwTrSt9lx6hpQ4FLzdxrT_w6y1aUt5oZ6fCfuNI")
 
+// Connexion de l'utilisateur
 function addListenerAuthentification() {
     const loginForm = document.querySelector(".login_user");
     loginForm.addEventListener("submit", function (event) {
@@ -21,10 +23,11 @@ function addListenerAuthentification() {
             const token = localStorage.getItem("user_token");
         }
 
+        // Message d'erreur si l'un des identifiants est erroné
         else {
             console.log("Authentication failed");
             const failedLogin = document.createElement("p");
-            failedLogin.innerHTML = "Votre identifiant ou votre mot de passe est erronné.<br>Veuillez réessayer.";
+            failedLogin.innerHTML = "Votre identifiant ou votre mot de passe est erroné.<br>Veuillez réessayer.";
             failedLogin.id = "failed_login";
             const loginForm = document.querySelector(".login_user");
             loginForm.appendChild(failedLogin);
