@@ -189,7 +189,7 @@ function addUserContent() {
     const overlay = document.querySelector(".modale_overlay");
 
     // Suppression de travaux // apres suppression dans le dom - retrouver les fetch all. 
-    function deleteWork(worksId, worksImageId, deleteIcon) {
+    function deleteWork(worksId, worksImageId) {
 
         const modalWork = document.querySelector(`#work${worksId}`);
         if (modalWork) {
@@ -220,10 +220,20 @@ function addUserContent() {
             }
         })
             .then(response => {
+                const failedMessage = document.getElementById("error_message");
+                if (failedMessage) {
+                    failedMessage.remove();
+                };
+
                 if (response.ok) {
                     console.log(`Work ${worksImageId} deleted`);
                 } else {
                     console.log("Delete request failed:", response.status, worksId);
+                    const errorMessage = document.createElement("p");
+                    errorMessage.innerHTML = "Un problème est survenu lors de la supression du travail.";
+                    errorMessage.id = "error_message_delete";
+                    errorMessage.display = "inline";
+                    modaleGallery.parentNode.insertBefore(errorMessage, modaleGallery.nextSibling);
                 }
             })
             .catch(error => {
