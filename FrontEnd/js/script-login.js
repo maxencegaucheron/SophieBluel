@@ -1,6 +1,3 @@
-// Stockage du token
-localStorage.setItem("user_token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcyMzk3Mzk2NSwiZXhwIjoxNzI0MDYwMzY1fQ.FvGxoLnQYLbmL49GEdtaIqg4QECJjB47DOHPfe3-EGE")
-
 // Connexion de l'utilisateur
 function addListenerAuthentification() {
     const loginForm = document.querySelector(".login_user");
@@ -17,21 +14,36 @@ function addListenerAuthentification() {
             failedMessage.remove();
         }
 
-        if (login.email === "sophie.bluel@test.tld" && login.password === "S0phie") {
-            console.log("Successfully authenticated");
-            window.location.href = "./index.html";
-            const token = localStorage.getItem("user_token");
-        }
+        fetch("http://localhost:5678/api/users/login", {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(login)
+        })
 
-        // Message d'erreur si l'un des identifiants est erroné
-        else {
-            console.log("Authentication failed");
-            const failedLogin = document.createElement("p");
-            failedLogin.innerHTML = "Votre identifiant ou votre mot de passe est erroné.<br>Veuillez réessayer.";
-            failedLogin.id = "failed_login";
-            const loginForm = document.querySelector(".login_user");
-            loginForm.appendChild(failedLogin);
-        }
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    const failedLogin = document.createElement("p");
+                    failedLogin.innerHTML = "Votre identifiant ou votre mot de passe est erroné.<br>Veuillez réessayer.";
+                    failedLogin.id = "failed_login";
+                    const loginForm = document.querySelector(".login_user");
+                    loginForm.appendChild(failedLogin);
+                    throw new Error("Authentication failed");
+                }
+            })
+            .then(data => {
+                console.log("Successfully authenticated");
+                window.location.href = "./index.html";
+                const token = data.token;
+                localStorage.setItem("user_token", token);
+            })
+            .catch(error => {
+                console.error("Authentication failed:", error);
+            });
     });
 }
 
